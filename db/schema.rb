@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_26_174338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -137,6 +137,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
     t.bigint "mob_id", null: false
     t.index ["habilidad_id", "mob_id"], name: "index_habilidads_mobs_on_habilidad_id_and_mob_id"
     t.index ["mob_id", "habilidad_id"], name: "index_habilidads_mobs_on_mob_id_and_habilidad_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.binary "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nombre"
   end
 
   create_table "items", force: :cascade do |t|

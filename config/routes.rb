@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :categs
   resources :estadoalterados
   resources :dndspells
+  resources :images do
+    member do
+      get 'download'
+    end
+  end
   get '/reglas', to: 'info#reglas'
   get '/estadosAlterados', to: 'info#estadosAlterados'
   get '/lore', to: 'info#lore'
