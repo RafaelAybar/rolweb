@@ -1,7 +1,11 @@
 <div class="clase-picture">
-    <a target="_blank" href="<%=x.image.url%>"> <%# target="_blank" : nueva pestaña del navegador %>
-        <%= render "shared/image", image: x.image %>
-    </a>
+    <% if x.image.present? %>
+        <a target="_blank" href="<%= x.image.url %>"> <%# target="_blank" : nueva pestaña del navegador %> </a>
+    <% else %>
+        <a target="_blank" href="#"> <%# Imagen no disponible o redirección a otro enlace si se prefiere %> </a>
+    <% end %>
+            <%= render "shared/image", image: x.image %>
+        </a>
     <div class="clase-picture-desc">
         <%= link_to x.nombre, x %>
     </div>

@@ -1,3 +1,7 @@
 class Picture < ApplicationRecord
-    mount_uploader :image, ImageUploader
+    include DatabaseImageUploaderMounter
+
+    mount_image_uploader
+
+    #mount_uploader :image, ImageUploader
 end
