@@ -2,8 +2,10 @@ class Clase < ApplicationRecord
     has_and_belongs_to_many :habilidads
     has_and_belongs_to_many :items
     has_and_belongs_to_many :categs
-    mount_uploader :image, ImageUploader
     
+    include DatabaseImageUploaderMounter
+    mount_image_uploader
+
     has_and_belongs_to_many :parents,
                             class_name: 'Clase',
                             join_table: 'clases_relations',
