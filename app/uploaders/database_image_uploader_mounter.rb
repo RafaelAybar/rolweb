@@ -3,40 +3,36 @@ require "active_support/concern"
 module DatabaseImageUploaderMounter
   extend ActiveSupport::Concern
 
+  class << self
+    attr_reader :dbiu
+  end
+  @dbiu = DatabaseImageUploader.new
+
   class_methods do
-    def mount_image_uploader
+    def mount_image_uploader(att_name = :image)
 
-      before_destroy :remove_image!
+      before_destroy :remove!
 
-      define_method(:init_image) do
-        @image ||= (Image.find_by(id: read_attribute(:image)) || Image.new)
+      define_method(:dbiu) do
+        DatabaseImageUploaderMounter.dbiu
       end
 
-      define_method(:image) do
-        init_image
-        @image
+      define_method(att_name) do
+        Rails.logger.debug "Method: #{att_name}"
+        @image ||= dbiu.get(read_attribute(att_name))
       end
 
-      define_method(:image=) do |file|
-        init_image
-        if file
-          @image.data = file.read
-          @image.nombre = file.original_filename
-          store_image!
-        else
-          raise "Nil file when trying to set image"
-        end
+      define_method("#{att_name}=") do |file|
+        Rails.logger.debug "Method: #{att_name}="
+        old_id = read_attribute(att_name)
+        id = dbiu.set(file, old_id)
+        write_attribute(att_name, id)
       end
 
-      define_method(:store_image!) do
-        @image.save!
-        write_attribute(:image, @image.id.to_s)
-      end
-
-      define_method(:remove_image!) do
-        init_image
-        @image.destroy
-        write_attribute(:image, nil)
+      define_method(:remove!) do
+        Rails.logger.debug "Method: move_#{att_name}!"
+        dbiu.remove!(read_attribute(att_name))
+        write_attribute(att_name, nil)
       end
 
     end
