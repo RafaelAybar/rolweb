@@ -46,6 +46,10 @@
         <% rescue SocketError%>
             No se puedo establecer la conexión con el servidor para comprobar la ip actual. <br>
         <% end %>
+        <br>
+        <br>
+        <br>
+        <%= link_to "Cerrar sesión", "/adminsession/close" %>
     </p>
 
     <% clases = Clase

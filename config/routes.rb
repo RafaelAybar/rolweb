@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get 'download'
     end
   end
+  resource :adminsession, only: [:new, :create]
+  get '/adminsession/close', to: 'adminsessions#close'
   get '/reglas', to: 'info#reglas'
   get '/estadosAlterados', to: 'info#estadosAlterados'
   get '/lore', to: 'info#lore'

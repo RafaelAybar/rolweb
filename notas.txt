@@ -113,3 +113,8 @@ pg_replslot
 pg_snapshots
 pg_tblspc
 pg_twophase
+
+
+Editar credenciales desde Windows:
+    $env:EDITOR="code --wait"
+    rails credentials:edit

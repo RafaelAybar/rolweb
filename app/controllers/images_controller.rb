@@ -1,10 +1,14 @@
 class ImagesController < ModelController
 
+  include AdminAccess
+  allow_public_access_to :download
+
   def initialize
     super 
     @tipo = Image
   end
   
+  # Solo necesario para testeos
   def create
     @image = Image.new
 
