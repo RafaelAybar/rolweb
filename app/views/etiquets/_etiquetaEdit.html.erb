@@ -1,0 +1,3 @@
+<%= render "etiqueta", x: x%>
+<%= link_to "Edit", edit_etiquet_path(x) %>
+<%= link_to "Destroy", etiquet_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

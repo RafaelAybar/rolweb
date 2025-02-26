@@ -57,6 +57,11 @@ a {
     color: inherit;
 }
 
+input {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 
 /*************************
  * CLASES CSS INVENTADAS *
@@ -475,6 +480,47 @@ a {
     border-radius: 5px;
 }
 
+.etiqueta {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.etiqueta:hover {
+    color: var(--c_base);
+    background-color: var(--c_alternativo);
+}
+
+.etiqueta-filtro{
+    background-color: var(--c_contraste);
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid var(--c_white);
+    border-radius: 5px;
+}
+
+
+.etiqueta-item {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.etiqueta-boton {
+    // font-family: 'EB Garamond', serif;
+    color: var(--c_black);
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--c_alternativo);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.etiqueta-boton:hover {
+    background-color: var(--c_alternativo_alt);
+}
 
 
 /* CARTA MOB */

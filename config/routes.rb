@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :categs
   resources :estadoalterados
   resources :dndspells
+  resources :etiquets
   resources :images do
     member do
       get 'download'

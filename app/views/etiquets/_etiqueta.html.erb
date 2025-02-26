@@ -1,0 +1,10 @@
+<%
+    darkFactor = 0.5
+    dark_color = x.color.delete("#")
+    r, g, b = dark_color.scan(/../).map { |c| (c.to_i(16) * darkFactor).round }
+    dark_color = "#%02x%02x%02x" % [r, g, b]
+%>
+
+<span class="etiqueta" style="background-color: <%= x.color %>; color: <%= dark_color %>; border-color: <%= dark_color %>;">
+    <%= x.nombre %>
+</span>

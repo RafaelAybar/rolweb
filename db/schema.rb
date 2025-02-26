@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_26_174338) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_26_174338) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "etiquets", force: :cascade do |t|
+    t.string "nombre"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "etiquets_pictures", id: false, force: :cascade do |t|
+    t.bigint "etiquet_id", null: false
+    t.bigint "picture_id", null: false
+    t.index ["etiquet_id", "picture_id"], name: "index_etiquets_pictures_on_etiquet_id_and_picture_id"
+    t.index ["picture_id", "etiquet_id"], name: "index_etiquets_pictures_on_picture_id_and_etiquet_id"
   end
 
   create_table "habilidads", force: :cascade do |t|
