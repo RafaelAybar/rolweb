@@ -1,5 +1,3 @@
-1rem
-
 docker exec -it rolweb-web-1 bash
 
 reinstalar gemas:
