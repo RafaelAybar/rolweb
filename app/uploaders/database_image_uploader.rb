@@ -36,7 +36,12 @@ class DatabaseImageUploader
   end
 
   def remove!(id)
-    get(id).destroy
-    CACHE.delete(id)
+    record = get(id)
+    if record
+      record.destroy
+      CACHE.delete(id)
+    else
+      Rails.logger.warn "DatabaseImageUploader#remove: Se ha intentado eliminar la imagen no exsistente, id: #{id}"
+    end
   end
 end

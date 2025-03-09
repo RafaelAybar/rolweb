@@ -1,0 +1,8 @@
+<% Rails.logger.debug "_image_with_link.html.erb: cssclass: #{local_assigns[:cssclass]}"  %>
+    <a
+        class="<%= local_assigns[:cssclass] || "" %>"
+        target="_blank" <%# target="_blank" : nueva pestaña del navegador %>
+        href="<%= image.present? ? image.url : "#" %>"
+        >
+        <%= render "shared/image", image: image %>
+    </a>

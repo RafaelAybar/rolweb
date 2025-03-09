@@ -205,10 +205,6 @@ input {
     font-size:2rem;
 }
 
-.reglas-font_color{
-    color: var(--c_base_alt);
-}
-
 .reglas-font_color:hover{
     color: var(--c_detalle);
 }
@@ -377,6 +373,13 @@ input {
     object-fit: cover;
 }
 
+.carta-image_item {
+    margin: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
 .carta-subtitles a.clase {
     background-color: var(--c_alternativo);
     color: var();
@@ -480,6 +483,10 @@ input {
     border-radius: 5px;
 }
 
+.picture-show img {
+    max-height: 400px;
+}
+
 .etiqueta {
     border: 2px solid;
     border-radius: 5px;
@@ -577,8 +584,9 @@ input {
     height: 200px;
     width: 200px;
 }
-.picture-show img {
-    max-height: 400px;
+.form-image img {
+    max-height: 200px;
+    max-width: 400px;
 }
 
 
