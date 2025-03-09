@@ -11,7 +11,7 @@ module DatabaseImageUploaderMounter
   class_methods do
     def mount_image_uploader(att_name = :image)
 
-      before_destroy :remove!
+      before_destroy "remove_#{att_name}!".to_sym
 
       define_method(:dbiu) do
         DatabaseImageUploaderMounter.dbiu
@@ -29,8 +29,8 @@ module DatabaseImageUploaderMounter
         write_attribute(att_name, id)
       end
 
-      define_method(:remove!) do
-        Rails.logger.debug "Method: move_#{att_name}!"
+      define_method("remove_#{att_name}!") do
+        Rails.logger.debug "Method: remove!"
         dbiu.remove!(read_attribute(att_name))
         write_attribute(att_name, nil)
       end

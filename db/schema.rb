@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_09_135201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,8 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
 
   create_table "clases", force: :cascade do |t|
     t.string "nombre"
-    t.text "efecto"
-    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
@@ -133,7 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
   create_table "habilidads", force: :cascade do |t|
     t.string "nombre"
     t.integer "nivel"
-    t.string "efecto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "oculto", default: false
@@ -164,9 +161,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
     t.string "nombre"
     t.decimal "coste"
     t.decimal "peso"
-    t.text "efecto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "items_mobs", id: false, force: :cascade do |t|
@@ -179,13 +176,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_21_104451) do
   create_table "mobs", force: :cascade do |t|
     t.string "nombre"
     t.string "image"
-    t.text "cuerpo"
     t.integer "estabilidad"
     t.integer "armaduraMagica"
     t.integer "penetracionFisica"
     t.integer "penetracionMagica"
     t.integer "sangre"
-    t.text "descripcion"
     t.decimal "oro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

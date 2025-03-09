@@ -14,4 +14,6 @@
     <% end %>
 </div>
 
-<p class="carta-description"><%= item.efecto %></p>
+<div class="carta-description"><%= item.efecto %></div>
+
+<%= render("shared/image_with_link", image: item.image, cssclass: "carta-image carta-image_item") if item.image%>

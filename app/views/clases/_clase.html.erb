@@ -5,8 +5,8 @@
     <%= clase_subtitulo(clase) %>
     <div class="carta-contents">
         <div class="carta-details">
-            <p class="carta-description carta-description_clase"><%= clase.efecto %></p>
-            <p class="carta-description carta-description_clase"><%= clase.descripcion %></p>
+            <div class="carta-description carta-description_clase"><%= clase.efecto %></div>
+            <div class="carta-description carta-description_clase"><%= clase.descripcion %></div>
         </div>
         <div class="carta-image">
             <%= render "shared/image", image: clase.image %>
