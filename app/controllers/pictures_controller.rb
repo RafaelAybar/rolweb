@@ -16,7 +16,7 @@ class PicturesController < ModelController
         .having('COUNT(etiquets.id) = ?', params[:etiquet_ids].size-1)
     end
 
-    @xs = @xs.order(:nombre)
+    @xs = @xs.order(:nombre).page(params[:page]).per(16)
   end
 
   def model_params

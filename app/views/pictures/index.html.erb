@@ -16,7 +16,12 @@
 
 
 <div class="grid-container blackBackground">
-    <% @xs.sort_by(&:nombre).each do |x| %>
+    <% @xs.each do |x| %>
         <%= render "picture", x: x%>
     <% end %>
+</div>
+
+<!-- Agregar enlaces de paginación -->
+<div class="pagination">
+  <%= paginate @xs %>
 </div>
