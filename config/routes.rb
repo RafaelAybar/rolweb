@@ -10,6 +10,15 @@ Rails.application.routes.draw do
   resources :mobs
   resources :categs
   resources :estadoalterados
+  resources :dndspells
+  resources :etiquets
+  resources :images do
+    member do
+      get 'download'
+    end
+  end
+  resource :adminsession, only: [:new, :create]
+  get '/adminsession/close', to: 'adminsessions#close'
   get '/reglas', to: 'info#reglas'
   get '/estadosAlterados', to: 'info#estadosAlterados'
   get '/lore', to: 'info#lore'
@@ -21,4 +30,5 @@ Rails.application.routes.draw do
   get '/lootbox', to: 'randompick#lootbox'
   post '/lootboxing', to: 'randompick#lootboxing'
   get '/clases-arbol', to: 'info#arbol'
+  get '/resetdndspells', to: 'dndspells#reset'
 end

@@ -1,0 +1,27 @@
+<%= form_with url: dndspell_path(@x["id"]), method: :put do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, value: @x["name"] %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :level %><br>
+    <%= form.number_field :level, value: @x["level"] %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :desc %><br>
+    <%= form.text_area :desc, value: @x["desc"] %>
+  </div>
+  <br>
+  <div>
+  <%= form.label :clase_ids %><br>
+  <%= form.collection_select :clase_ids, @clases, -> (x) {x["id"]}, -> (x) {x["name"]}, {}, multiple: true,  class: "form-select" %>
+  </div>
+  <div>
+  <%= form.label :magicschool_ids %><br>
+  <%= form.collection_select :magicschool_ids, @magicschools, -> (x) {x["id"]}, -> (x) {x["name"]}, {}, multiple: false, class: "form-select" %>
+  </div>
+  <br>
+  <%= form.submit "Update Spell" %>
+<% end %>

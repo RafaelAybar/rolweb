@@ -31,7 +31,7 @@
 }
 
 .trix-content {
-  display: inline;
+  display: block;
   line-height:inherit;
 }
 

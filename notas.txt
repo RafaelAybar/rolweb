@@ -1,6 +1,8 @@
-1rem
-
 docker exec -it rolweb-web-1 bash
+
+reinstalar gemas:
+    bundle install
+
 
 Para evitar romper la bd hacer commit de la bd con el contenedor apagado, si no:
 CUANDO SE JODE LA INTEGRIDAD DE LA BD:
@@ -63,6 +65,8 @@ rails console
 
 rails generate model
 
+rails generate scaffold     LITERALMENTE LO HACE TODO
+
 
 
 
@@ -107,3 +111,8 @@ pg_replslot
 pg_snapshots
 pg_tblspc
 pg_twophase
+
+
+Editar credenciales desde Windows:
+    $env:EDITOR="code --wait"
+    rails credentials:edit

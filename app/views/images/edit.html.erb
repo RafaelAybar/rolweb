@@ -1,0 +1,5 @@
+<h1>Editar Imagen</h1>
+
+<%= render "form", image: @x %>
+
+<%= link_to "Destroy", image_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
