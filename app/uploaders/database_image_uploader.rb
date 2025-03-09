@@ -1,5 +1,3 @@
-require "active_support/cache"
-
 class DatabaseImageUploader
   # Nota importante: en image se guarda el id de
   # la imagen en la base de datos como un string.
@@ -11,16 +9,8 @@ class DatabaseImageUploader
   # pero parece que al final a ruby on rails se
   # la pela y se come el string igual con patatas.
   
-  CACHE = ActiveSupport::Cache::MemoryStore.new(size: 200.megabytes)  # Caché compartida
-  
-  def fetch(id)
-    CACHE.fetch(id) do
-      Image.find_by(id: id)
-    end
-  end
-
   def get(id)
-    fetch(id)
+    Image.find_by(id: id)
   end
 
   def set(file, old_id)
@@ -39,9 +29,8 @@ class DatabaseImageUploader
     record = get(id)
     if record
       record.destroy
-      CACHE.delete(id)
     else
-      Rails.logger.warn "DatabaseImageUploader#remove: Se ha intentado eliminar la imagen no exsistente, id: #{id}"
+      Rails.logger.warn "DatabaseImageUploader#remove: Se ha intentado eliminar la imagen no existente, id: #{id}"
     end
   end
 end
