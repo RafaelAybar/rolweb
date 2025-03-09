@@ -1,5 +1,5 @@
 <% if image.present? && (!image.respond_to?(:persisted?) || image.persisted?) %>
-  <%= image_tag image.url %>
+  <%= image_tag image.url, loading: "lazy" %>
 <% else %>
-  <%= image_tag "FotoPorDefecto.png" %>
+  <%= image_tag "FotoPorDefecto.png", loading: "lazy" %>
 <% end %>
