@@ -3,7 +3,6 @@ class Clase < ApplicationRecord
     has_and_belongs_to_many :items
     has_and_belongs_to_many :categs
     
-    include DatabaseImageUploaderMounter
     mount_image_uploader
 
     has_and_belongs_to_many :parents,
