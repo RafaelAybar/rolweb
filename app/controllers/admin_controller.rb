@@ -15,5 +15,10 @@ class AdminController < ApplicationController
 
     def items_no_categ
     end
+
+    def delete_disk_cache
+        HybridCache.clear_disk_cache!
+        redirect_to "/control"
+    end
 end
 

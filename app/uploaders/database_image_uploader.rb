@@ -1,16 +1,12 @@
+require_relative '../lib/hybrid_cache'
+
 class DatabaseImageUploader
-  # Nota importante: en image se guarda el id de
-  # la imagen en la base de datos como un string.
-  # Esto es porque otros uploaders usan un string
-  # para ello. Pero como el id es un entero en la
-  # base de datos, pues a hacer castings.
-  # 
-  # Todo esto es muy bonito para tener en cuenta
-  # pero parece que al final a ruby on rails se
-  # la pela y se come el string igual con patatas.
+  def initialize
+    @cache = HybridCache.new(Image, memory_sizeMB:50)
+  end
   
   def get(id)
-    Image.find_by(id: id)
+    @cache.fetch(id)
   end
 
   def set(file, old_id)
@@ -21,13 +17,15 @@ class DatabaseImageUploader
       img = Image.create!(
         data: file.read,
         nombre: file.original_filename)
+      @cache.store(img)
       img.id
     end
   end
 
   def remove!(id)
-    record = get(id)
+    record = @cache.fetch(id)
     if record
+      @cache.remove(id)
       record.destroy
     else
       Rails.logger.warn "DatabaseImageUploader#remove: Se ha intentado eliminar la imagen no existente, id: #{id}"
