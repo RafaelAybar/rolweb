@@ -3,7 +3,7 @@
 
 <%= form_with url: pictures_path, method: :get, local: true, class: 'etiqueta-filtro' do |form| %>
     <%= form.label :etiquet_ids, "Filtrar por etiquetas:" %>
-    <%= form.collection_check_boxes :etiquet_ids, Etiquet.all, :id, :nombre do |cb| %>
+    <%= form.collection_check_boxes :etiquet_ids, Etiquet.all.order(:nombre), :id, :nombre do |cb| %>
         <div class="etiqueta-item">
             <%= render "etiquets/etiqueta", x: cb.object %>
             <%= cb.check_box %>
