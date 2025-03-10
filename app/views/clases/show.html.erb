@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <h1>Hablidades:</h1>
+    <h1>Habilidades:</h1>
     <%= render "habilidads/lista", habilidades: @x.habilidads%>
     
     <% if !@x.items.empty?%>
@@ -51,8 +51,6 @@
             <% end %>
         </div>
     <% end %>
-
-
 </div>
 
 <%= link_to "Edit", edit_clase_path(@x) %>

@@ -1,0 +1,14 @@
+defaults: &defaults
+  views:
+    pagination:
+      first: "⏮"
+      last: "⏭"
+      previous: "‹"
+      next: "›"
+      truncate: "…"
+
+es:
+  <<: *defaults
+
+en:
+  <<: *defaults
