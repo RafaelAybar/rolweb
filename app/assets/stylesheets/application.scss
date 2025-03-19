@@ -57,6 +57,11 @@ a {
     color: inherit;
 }
 
+input {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 
 /*************************
  * CLASES CSS INVENTADAS *
@@ -198,10 +203,6 @@ a {
 
 .recursos {
     font-size:2rem;
-}
-
-.reglas-font_color{
-    color: var(--c_base_alt);
 }
 
 .reglas-font_color:hover{
@@ -372,6 +373,13 @@ a {
     object-fit: cover;
 }
 
+.carta-image_item {
+    margin: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
 .carta-subtitles a.clase {
     background-color: var(--c_alternativo);
     color: var();
@@ -453,6 +461,7 @@ a {
 /* CUADROS */
 .body-blackBackground {
     background-color: var(--c_black);
+    color: var(--c_white)
 }
 
 .clase-picture {
@@ -475,6 +484,51 @@ a {
     border-radius: 5px;
 }
 
+.picture-show img {
+    max-height: 400px;
+}
+
+.etiqueta {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.etiqueta:hover {
+    color: var(--c_base);
+    background-color: var(--c_alternativo);
+}
+
+.etiqueta-filtro{
+    background-color: var(--c_contraste);
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid var(--c_white);
+    border-radius: 5px;
+}
+
+
+.etiqueta-item {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.etiqueta-boton {
+    // font-family: 'EB Garamond', serif;
+    color: var(--c_black);
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--c_alternativo);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.etiqueta-boton:hover {
+    background-color: var(--c_alternativo_alt);
+}
 
 
 /* CARTA MOB */
@@ -531,8 +585,9 @@ a {
     height: 200px;
     width: 200px;
 }
-.picture-show img {
-    max-height: 400px;
+.form-image img {
+    max-height: 200px;
+    max-width: 400px;
 }
 
 

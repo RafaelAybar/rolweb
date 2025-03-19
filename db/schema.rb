@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_09_135201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,8 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
 
   create_table "clases", force: :cascade do |t|
     t.string "nombre"
-    t.text "efecto"
-    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
@@ -116,10 +114,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "etiquets", force: :cascade do |t|
+    t.string "nombre"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "etiquets_pictures", id: false, force: :cascade do |t|
+    t.bigint "etiquet_id", null: false
+    t.bigint "picture_id", null: false
+    t.index ["etiquet_id", "picture_id"], name: "index_etiquets_pictures_on_etiquet_id_and_picture_id"
+    t.index ["picture_id", "etiquet_id"], name: "index_etiquets_pictures_on_picture_id_and_etiquet_id"
+  end
+
   create_table "habilidads", force: :cascade do |t|
     t.string "nombre"
     t.integer "nivel"
-    t.string "efecto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "oculto", default: false
@@ -139,13 +150,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
     t.index ["mob_id", "habilidad_id"], name: "index_habilidads_mobs_on_mob_id_and_habilidad_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.binary "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nombre"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "nombre"
     t.decimal "coste"
     t.decimal "peso"
-    t.text "efecto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "items_mobs", id: false, force: :cascade do |t|
@@ -158,13 +176,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_133327) do
   create_table "mobs", force: :cascade do |t|
     t.string "nombre"
     t.string "image"
-    t.text "cuerpo"
     t.integer "estabilidad"
     t.integer "armaduraMagica"
     t.integer "penetracionFisica"
     t.integer "penetracionMagica"
     t.integer "sangre"
-    t.text "descripcion"
     t.decimal "oro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

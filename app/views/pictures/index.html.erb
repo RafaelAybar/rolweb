@@ -1,5 +1,20 @@
 <% content_for :body_class, 'body-blackBackground' %>
 
+
+<%= form_with url: pictures_path, method: :get, local: true, class: 'etiqueta-filtro' do |form| %>
+    <%= form.label :etiquet_ids, "Filtrar por etiquetas:" %>
+    <%= form.collection_check_boxes :etiquet_ids, Etiquet.all, :id, :nombre do |cb| %>
+        <div class="etiqueta-item">
+            <%= render "etiquets/etiqueta", x: cb.object %>
+            <%= cb.check_box %>
+        </div>
+    <% end %>
+    <br>
+    <%= form.submit "Filtrar", class: "etiqueta-boton" %>
+    <%= link_to 'Limpiar filtro', pictures_path, class: 'etiqueta-boton' %>
+<% end %>
+
+
 <div class="grid-container blackBackground">
     <% @xs.sort_by(&:nombre).each do |x| %>
         <%= render "picture", x: x%>

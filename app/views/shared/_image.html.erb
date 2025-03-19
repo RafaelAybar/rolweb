@@ -1,4 +1,4 @@
-<% if image.present? %>
+<% if image.present? && (!image.respond_to?(:persisted?) || image.persisted?) %>
   <%= image_tag image.url %>
 <% else %>
   <%= image_tag "FotoPorDefecto.png" %>

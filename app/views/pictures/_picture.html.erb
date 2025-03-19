@@ -1,7 +1,5 @@
 <div class="clase-picture">
-    <a target="_blank" href="<%=x.image.url%>"> <%# target="_blank" : nueva pestaña del navegador %>
-        <%= render "shared/image", image: x.image %>
-    </a>
+    <%= render "shared/image_with_link", image: x.image %>
     <div class="clase-picture-desc">
         <%= link_to x.nombre, x %>
     </div>

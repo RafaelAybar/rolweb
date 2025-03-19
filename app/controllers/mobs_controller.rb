@@ -1,6 +1,7 @@
 class MobsController < ModelController
   
-  http_basic_authenticate_with name: "yomismo", password: "yasabess", except: [:show]
+  include AdminAccess
+  restrict_admin_access_to :index
 
   def initialize
     super 

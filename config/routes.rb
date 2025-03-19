@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   resources :categs
   resources :estadoalterados
   resources :dndspells
+  resources :etiquets
+  resources :images do
+    member do
+      get 'download'
+    end
+  end
+  resource :adminsession, only: [:new, :create]
+  get '/adminsession/close', to: 'adminsessions#close'
   get '/reglas', to: 'info#reglas'
   get '/estadosAlterados', to: 'info#estadosAlterados'
   get '/lore', to: 'info#lore'

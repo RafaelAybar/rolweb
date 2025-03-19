@@ -1,7 +1,13 @@
+<% content_for :body_class, 'body-blackBackground' %>
+
 <h1><%= @x.nombre %></h1>
 <div class="picture-show">
     <%= render "shared/image", image: @x.image %>
 </div>
+<br>
+<% @x.etiquets.sort_by(&:nombre).each do |x| %>
+    <%= render "etiquets/etiqueta", x:x%>
+<% end %>
 <br>
 <%= link_to "Edit", edit_picture_path(@x) %>
 <%= link_to "Destroy", picture_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

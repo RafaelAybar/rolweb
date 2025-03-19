@@ -1,0 +1,23 @@
+<%= form_with model: @x do |form| %>
+  <div>
+    <%= form.label :nombre %><br>
+    <%= form.text_field :nombre %>
+  </div>
+  <br>
+  
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.color_field :color, value: @x.color || "#000000" %>
+  </div>
+  <br>
+    
+  <div>
+    <%= form.label :pictures, 'Imágenes Asociadas' %><br>
+    <%= form.collection_select :picture_ids, Picture.order(:nombre), :id, :nombre, {}, multiple: true, class: "form-select" %>
+  </div>
+  <br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

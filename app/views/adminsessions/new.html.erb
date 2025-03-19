@@ -1,0 +1,5 @@
+<h2>Requiere contraseña de administrador:</h2>
+<%= form_with url: adminsession_path, method: :post do %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Acceder" %>
+<% end %>

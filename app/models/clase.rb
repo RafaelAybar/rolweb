@@ -1,9 +1,14 @@
 class Clase < ApplicationRecord
+    # atributes: nombre, efecto, descripcion, image, oculto, raza, radical
+    has_rich_text :efecto
+    has_rich_text :descripcion
+    
+    mount_image_uploader
+
     has_and_belongs_to_many :habilidads
     has_and_belongs_to_many :items
     has_and_belongs_to_many :categs
-    mount_uploader :image, ImageUploader
-    
+
     has_and_belongs_to_many :parents,
                             class_name: 'Clase',
                             join_table: 'clases_relations',

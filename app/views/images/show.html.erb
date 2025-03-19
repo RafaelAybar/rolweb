@@ -1,0 +1,4 @@
+<h1>Image <%=@x.nombre%></h1>
+
+<%= render "image", image: @x %>
+<%= link_to "Destroy", image_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

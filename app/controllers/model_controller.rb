@@ -1,7 +1,9 @@
 # Clase base para los modelos. Requiere que se implemente model_params en su hija.
 class ModelController < ApplicationController
     
-    http_basic_authenticate_with name: "yomismo", password: "yasabess", except: [:index, :show]
+    include AdminAccess
+    restrict_admin_access
+    allow_public_access_to :index, :show
     
     def index
         @xs = @tipo.all

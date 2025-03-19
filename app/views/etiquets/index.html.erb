@@ -1,0 +1,5 @@
+<ul>
+    <% @xs.sort_by(&:nombre).each do |x| %>
+        <li><%= render "etiquetaEdit", x:x%></li>
+    <% end %>
+</ul>
