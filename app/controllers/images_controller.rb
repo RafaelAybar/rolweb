@@ -8,6 +8,10 @@ class ImagesController < ModelController
     @tipo = Image
   end
   
+  def index
+    @xs = Image.all.page(params[:page]).per(16)
+  end
+  
   # Solo necesario para testeos
   def create
     @image = Image.new
