@@ -79,3 +79,6 @@ gem 'httparty'
 
 # para tener un css más chulo
 gem 'sass-rails', '~> 6.0'
+
+# paginación de modelos
+gem 'kaminari'

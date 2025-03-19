@@ -1,7 +1,7 @@
 <h2>All images</h2>
 
 <div class="grid-container">
-    <% Image.all.each do |x| %>
+    <% @xs.each do |x| %>
         <div>
             <%= link_to x.nombre, x%>
             <div class="clase-picture">
@@ -11,3 +11,6 @@
     <% end %>
 </div>
 
+<div class="pagination">
+  <%= paginate @xs %>
+</div>
