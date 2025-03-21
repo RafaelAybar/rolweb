@@ -2,6 +2,7 @@ class ImagesController < ModelController
 
   include AdminAccess
   allow_public_access_to :download
+  @@cache = DiskCache.get_cache(Image) # Uso exclusivo para download
 
   def initialize
     super 
@@ -31,7 +32,7 @@ class ImagesController < ModelController
 
   # Acción para servir el archivo binario como imagen descargable
   def download
-    @image = Image.find(params[:id])
+    @image = @@cache.fetch(params[:id])
     nombre = @image.nombre
     extension = File.extname(nombre).delete_prefix('.')
     send_data @image.data, filename: "#{nombre}", type: "image/#{extension}", disposition: "inline"
