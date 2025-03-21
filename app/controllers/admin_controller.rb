@@ -2,6 +2,8 @@ class AdminController < ApplicationController
     include AdminAccess
     restrict_admin_access
 
+    include UnlimitedCache
+    
     def control
     end
 
@@ -18,6 +20,13 @@ class AdminController < ApplicationController
 
     def delete_disk_cache
         HybridCache.clear_disk_cache!
+        redirect_to "/control"
+    end
+
+    def delete_navbar_cache
+        cache_delete "clases_ocultas"
+        cache_delete "clases_visibles"
+        cache_delete "categorias"
         redirect_to "/control"
     end
 end

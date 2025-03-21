@@ -16,6 +16,9 @@
   <body <%= content_for?(:body_class) ? "class=#{yield(:body_class)}" : '' %>>
     <div class="navbar">
       
+      <%# Esta subnavbar es realmente innecesaria a día de hoy, exsiste para poder acomodar una imagen %>
+      <%# de logo tipo delante de ella, pero se eliminó. Sin embargo es más trabajo readaptar el css %>
+      <%# para que se vea igual, así que la dejamos. %>
       <div class="subnavbar">
         <h1> Doors Maze</h1>
         <div class="subsubnavbar">
@@ -37,10 +40,10 @@
               <%= link_to "Árbol de clases", "/clases-arbol", class:"mainLink" %>
               <%= link_to "Clases radicales", clases_path(mode:"radical"), class:"mainLink" %>
               <%= link_to "Razas", clases_path(mode:"raza"), class:"mainLink" %>
-              <% Clase.where(oculto:true).sort_by(&:nombre).each do |clase| %>
+              <% navbar_cache_clases_ocultas.each do |clase| %>
                   <%= link_to clase.nombre, clase, class:"mainLink"  %>
               <% end %>
-              <% Clase.where(oculto:false).sort_by(&:nombre).each do |clase| %>
+              <% navbar_cache_clases_visibles.each do |clase| %>
                   <%= link_to clase.nombre, clase %>
               <% end %>
             </div>
@@ -51,7 +54,7 @@
             <div class="submenu-content">
               <%= link_to "Todos los items", items_path, class:"mainLink" %>
               <%= link_to "Cofre aleatorio", "/lootbox", class:"mainLink" %>
-              <% Categ.all.sort_by(&:nombre).each do |ct| %>
+              <% navbar_cache_categorias.each do |ct| %>
                   <%= link_to ct.nombre, ct %>
               <% end %>
             </div>

@@ -2,7 +2,7 @@ require_relative '../lib/hybrid_cache'
 
 class DatabaseImageUploader
   def initialize
-    @cache = DiskCache.new(Image)
+    @cache = DiskCache.get_cache(Image)
   end
   
   def get(id)
