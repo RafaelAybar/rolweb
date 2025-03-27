@@ -1,5 +1,5 @@
 require_relative '../lib/hybrid_cache'
-require_relative '../models/Image'
+require_relative '../models/image'
 
 class DatabaseImageUploader
   def initialize
