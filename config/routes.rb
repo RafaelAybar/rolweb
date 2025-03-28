@@ -12,11 +12,7 @@ Rails.application.routes.draw do
   resources :estadoalterados
   resources :dndspells
   resources :etiquets
-  resources :images do
-    member do
-      get 'download'
-    end
-  end
+  get 'images/:id/download', to: 'images#download', as: 'download_image'
   resource :adminsession, only: [:new, :create]
   get '/adminsession/close', to: 'adminsessions#close'
   get '/reglas', to: 'info#reglas'
