@@ -15,6 +15,8 @@ $max-margin-media: 768px;
     --c_alternativo_alt: #D797E7;
     --c_detalle: #6d5ac6;
     --c_detalle_alt: #A095D0;
+    --c_link: #003d99;
+    --c_link_alt: #667a99;
 
 }
 
@@ -200,6 +202,17 @@ input {
         margin-right: 10px;
     }
 }
+.texto_info a {
+    color: var(--c_link);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.texto_info a:hover {
+    color: var(--c_link_alt);
+}
+.texto_info a:focus {
+    outline: 2px solid var(--c_detalle);
+}
+  
 
 
 .mods-table {
@@ -224,6 +237,30 @@ input {
     color: var(--c_detalle);
 }
 
+//Usando id en vez de clase
+#spoiler-alert button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: var(--c_alternativo);
+    color: var(--c_base);
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid var(--c_base);    
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #spoiler-alert button:hover {
+    background-color: var(--c_alternativo_alt);
+  }
+  
+  #spoiler-alert button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--c_base);
+  }
 
 
 /* CARTAS */

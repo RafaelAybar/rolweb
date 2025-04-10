@@ -29,5 +29,10 @@ class AdminController < ApplicationController
         cache_delete "categorias"
         redirect_to "/control"
     end
+
+    def delete_all_cache
+        cache_clear
+        redirect_to "/control"
+    end
 end
 

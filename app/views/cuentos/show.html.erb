@@ -1,18 +1,22 @@
-<h1><%=@x.nombre%></h1>
-<%if @x.spoilers%>
-  <div>
-    <strong>¡Cuidado! Este cuento tiene spoilers.</strong>
-  </div>
-<%else%>
-  <div>
-    <strong>Este cuento no tiene spoilers.</strong>
-  </div>
-<%end%>
+<div class="texto_info">
 
-<div>
-  <%= @x.texto %>
+  <h1><%= @x.nombre %></h1>
+
+  <% if @x.spoilers %>
+    <div id="spoiler-alert">
+      <strong>¡Cuidado! Este artículo tiene información sensible. Tal vez no quieras leerla para evitar spoilers.</strong><br>
+      <button onclick="document.getElementById('spoiler-text').style.display='block'; document.getElementById('spoiler-alert').style.display='none';">
+        ⚠️MOSTRAR⚠️
+      </button>
+    </div>
+  <% end %>
+
+  <div id="spoiler-text" style="<%="display: none;" if @x.spoilers%>">
+    <%= enlazar_nombres_conocidos(@x.texto.body.to_html) %>
+  </div>
 </div>
 
 <br>
+<br>
 <%= link_to "Edit", edit_cuento_path(@x) %> |
-<%= link_to "Destroy", cuento_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%= link_to "Destroy", cuento_path(@x), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
