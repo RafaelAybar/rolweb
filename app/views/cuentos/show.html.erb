@@ -1,0 +1,18 @@
+<h1><%=@x.nombre%></h1>
+<%if @x.spoilers%>
+  <div>
+    <strong>¡Cuidado! Este cuento tiene spoilers.</strong>
+  </div>
+<%else%>
+  <div>
+    <strong>Este cuento no tiene spoilers.</strong>
+  </div>
+<%end%>
+
+<div>
+  <%= @x.texto %>
+</div>
+
+<br>
+<%= link_to "Edit", edit_cuento_path(@x) %> |
+<%= link_to "Destroy", cuento_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

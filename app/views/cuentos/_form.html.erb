@@ -1,0 +1,21 @@
+<%= form_with(model: cuento) do |form| %>
+
+  <div>
+    <%= form.label :nombre%><br>
+    <%= form.text_field :nombre %><br>
+  </div>
+
+  <div>
+    <%= form.label :spoilers%><br>
+    <%= form.check_box :spoilers %><br>
+  </div>
+
+  <div>
+    <%= form.label :texto %><br>
+    <%= form.rich_text_area :texto %><br>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

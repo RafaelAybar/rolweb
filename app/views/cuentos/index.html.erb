@@ -1,0 +1,9 @@
+<h1>Listado de artículos</h1>
+
+<p>
+  <% @xs.order(:nombre).each do |cuento| %>
+      <%= link_to cuento.nombre, cuento %>
+      <br>
+  <% end %>
+</p>
+
