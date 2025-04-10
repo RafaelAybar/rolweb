@@ -6,6 +6,6 @@ class CuentosController < ModelController
   end
 
   def model_params
-    params.require(:cuento).permit(:nombre, :spoilers, :texto)
+    params.require(:cuento).permit(:nombre, :spoilers, :texto, :prioridad)
   end
 end

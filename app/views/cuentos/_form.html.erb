@@ -11,6 +11,10 @@
   </div>
 
   <div>
+    <%= form.label :prioridad %><br>
+    <%= form.number_field :prioridad, in: 0..100 %><br>
+
+  <div>
     <%= form.label :texto %><br>
     <%= form.rich_text_area :texto %><br>
   </div>

@@ -21,6 +21,9 @@ rails credentials:edit
 rails server
     start server
 
+rails db:migrate
+    meter modelos en la DB
+
 GENERAR COSAS y ejemplos
 
     rails generate scaffold     LITERALMENTE LO HACE TODO
@@ -50,9 +53,6 @@ GENERAR COSAS y ejemplos
     rails generate migration AddNombreDeCampoToNombreDeModelo nombre_de_campo:data_type
     rails generate migration RemoveNombreDeColumnaFromNombreDeModelo nombre_de_columna:data_type
     rails generate migration CreateJoinTablePrimerosSegundos primeros segundos
-
-    rails db:migrate
-        meter modelos en la DB
 
     Examples
         rails generate model picture nombre:string image:string
