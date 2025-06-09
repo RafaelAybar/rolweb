@@ -374,7 +374,7 @@ input {
 }
 
 .carta-description {
-    max-height: 200px;
+    max-height: 400px;
     overflow-y: auto;
     margin: 20px;
     margin-top: 5px;
@@ -628,7 +628,7 @@ input {
     gap: 5px;
     margin: 10px;
     padding: 0;
-    height: 74%;
+    height: 300px;
 }
 .mob-estabilidad { grid-area: estabilidad; }
 .mob-sangre { grid-area: sangre; }
