@@ -1,4 +1,6 @@
-<% if image.present? && (!image.respond_to?(:persisted?) || image.persisted?) %>
+<% if image.respond_to?(:not_found?) && image.not_found? %>
+  <%= image_tag "imageLoadFail.png" %>
+<% elsif image.present? %>
   <%= image_tag image.url %>
 <% else %>
   <%= image_tag "FotoPorDefecto.png" %>

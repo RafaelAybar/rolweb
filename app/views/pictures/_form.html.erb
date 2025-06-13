@@ -6,14 +6,14 @@
   <br>
 
   <div>
-    <%= form.label :image %><br>
-    <%= form.file_field :image %>
+    <%= form.label :etiquets, "Etiquetas" %><br>
+    <%= form.collection_check_boxes :etiquet_ids, Etiquet.all, :id, :nombre %>
   </div>
   <br>
 
   <div>
-    <%= form.label :etiquets, "Etiquetas" %><br>
-    <%= form.collection_check_boxes :etiquet_ids, Etiquet.all, :id, :nombre %>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
   </div>
   <br>
   

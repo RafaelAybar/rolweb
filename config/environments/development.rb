@@ -69,4 +69,11 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << "doorsmaze.com"
+
+  # Configuration for minio
+  config.x.minio.endpoint = "http://minio:9000"
+  config.x.minio.access_key_id = "minioaccess"
+  config.x.minio.secret_access_key = "miniosecret"
+  config.x.minio.region = "us-east-1"
+  config.x.minio.bucket = "cubo"
 end
