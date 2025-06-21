@@ -19,7 +19,7 @@ class AdminController < ApplicationController
     end
 
     def delete_disk_cache
-        HybridCache.clear_disk_cache!
+        DiskCache.clear_disk_cache!
         redirect_to "/control"
     end
 

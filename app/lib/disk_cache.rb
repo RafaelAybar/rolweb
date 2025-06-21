@@ -1,7 +1,7 @@
 require "fileutils"
 require "stringio"
 
-class DiskCache
+class DiskCache < InterfaceCache
   CACHE_DIR = Rails.root.join('tmp', 'cache', 'hybrid_cache')
   FileUtils.mkdir_p(CACHE_DIR) unless Dir.exist?(CACHE_DIR)
   @@caches = {}
@@ -14,7 +14,7 @@ class DiskCache
     @@caches[model_class] = self
   end
 
-  def self.get_cache model_class
+  def self.get_cache(model_class)
     @@caches.fetch(model_class, DiskCache.new(model_class))
     # nótese que cuando falla, no añade el segundo argumento al hash,
     # pero lo estamos añadiendo en el initialize
@@ -27,11 +27,10 @@ class DiskCache
   def fetch(id)
     cache_path = disk_cache_file(id)
     if File.exist?(cache_path)
-      Rails.logger.debug "DiskCache.fetch found! id:#{id}"
       Marshal.load(StringIO.new(File.read(cache_path)).read)
     else
-      Rails.logger.debug "DiskCache.fetch missed! id:#{id}"
-      record = @model_class.find_by(id: id)
+      # Si se pasa un bloque, se usa para buscar el valor del registro,
+      record = block_given? ? yield : @model_class.find_by(id: id)
       return nil unless record
       store(record)
       record
@@ -40,7 +39,7 @@ class DiskCache
 
   # stores only in cache, not in database
   def store(record)
-    raise 'HybridCache.store: record cannot be nil' unless record
+    raise 'DiskCache.store: record cannot be nil' unless record
     File.open(disk_cache_file(record.id), 'wb') do |f|
       f.write(Marshal.dump(record))
     end
@@ -54,6 +53,6 @@ class DiskCache
     Dir.glob("#{CACHE_DIR}/*/*").each do |file|
       FileUtils.rm_f(file)
     end
-    Rails.logger.info "HybridCache: Disk cache cleared completely, subdirectories preserved."
+    Rails.logger.info "DiskCache#clear_disk_cache!: Disk cache cleared completely, subdirectories preserved."
   end
 end

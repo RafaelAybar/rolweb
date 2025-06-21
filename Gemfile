@@ -82,3 +82,6 @@ gem 'sass-rails', '~> 6.0'
 
 # paginación de modelos
 gem 'kaminari'
+
+# para el minio
+gem 'aws-sdk-s3', '~> 1.0'
