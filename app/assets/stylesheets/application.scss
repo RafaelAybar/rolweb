@@ -20,7 +20,7 @@ $max-margin-media: 768px;
 
 @font-face{
     font-family:'Seagram';
-    src: font-url('Seagram_tfb.ttf') format('truetype');;
+    src: url('Seagram_tfb.ttf') format('truetype');
 }
 
 /*****************************
@@ -569,7 +569,7 @@ input {
 }
 
 .etiqueta-boton {
-    // font-family: 'EB Garamond', serif;
+    /* font-family: 'EB Garamond', serif; */
     color: var(--c_black);
     margin-top: 10px;
     padding: 10px 20px;

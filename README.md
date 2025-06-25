@@ -23,9 +23,14 @@ To run it in *Docker*, follow these steps:
 3. Run docker compose up in the root folder.
 4. You can access the web interface at localhost:80. You may access the database on port 5555.
 
-You'll find a lot of content already pulled from the database. This should be similar to what can be found in production, but it may contain errors or be incomplete.
+There is an admin system within the webpage for changing the data. You must set `admin_password` in rail's credentials to be able to access it. 
+
+You'll find a lot of content already pulled from the database.
 
 The database data is saved in Git to always have it available for testing purposes during development.
 
-## Production mode
-I have no idea why anyone would want to put this in production. But no special steps are needed to run this in production. Just make sure to follow the steps required by the host you are using and don't forget to configure the database connection in config/database.yml.
+## Docker Production mode
+You can run this app as it is in production mode just by changing the cofiguration in the `.env` file before running `docker compose up`. Remember to add `--build` if you need to change the ruby image from development to production or viceversa. 
+
+## Actual Production mode
+I have no idea why anyone would want to put this in production. But no special steps are needed to run this in production. Just make sure to follow the steps required by the host you are using and don't forget to configure the database connection in config/database.yml and the MinIO connection in rails credentials.

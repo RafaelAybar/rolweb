@@ -1,23 +1,28 @@
-# Utiliza la imagen base de Ruby
-FROM ruby:3.1.3
-
-# Establece el directorio de trabajo en el contenedor
+FROM ruby:3.2.8-bookworm
 WORKDIR /app
 
-# Copia el archivo Gemfile y Gemfile.lock al contenedor
-COPY Gemfile Gemfile.lock ./
+ARG RAILS_ENV
+ENV RAILS_ENV=${RAILS_ENV}
 
-# Instala las gemas de la aplicación (dependencias)
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# Copia el resto de la aplicación al contenedor
-COPY . .
+COPY app/ app/
+COPY bin/ bin/
+COPY config/ config/
+COPY lib/ lib/
+# Should be overwritten in production by precompile
+COPY public/ public/
+COPY Rakefile .
+COPY config.ru .
 
-# Expone el puerto 3000 para acceder a la aplicación
+RUN if [ "$RAILS_ENV" = "production" ]; then \
+  true; \
+    rails assets:precompile; \
+  fi
+
 EXPOSE 3000
 
-# Define el comando para iniciar el servidor de Rails
 # Puto tmp (hay que borrarlo para evitar errores, ni idea de porqué)
 # iniciar rails
-CMD rm -rf /app/tmp/* && bin/rails server -b 0.0.0.0
-# CMD rm -rf /app/tmp/* && bin/rails server -b 0.0.0.0 -e production
+CMD rm -rf /app/tmp/* && bin/rails server -b 0.0.0.0 -e ${RAILS_ENV}

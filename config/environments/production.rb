@@ -93,8 +93,8 @@ Rails.application.configure do
 
   # Configuration for minio
   config.x.minio.endpoint = Rails.application.credentials.dig(:minio, :endpoint)
-  config.x.minio.access_key_id = Rails.application.credentials.dig(:minio, :access_key)
-  config.x.minio.secret_access_key = Rails.application.credentials.dig(:minio, :secret_key)
+  config.x.minio.access_key_id = Rails.application.credentials.dig(:minio, :access_key_id)
+  config.x.minio.secret_access_key = Rails.application.credentials.dig(:minio, :secret_access_key)
   config.x.minio.region = Rails.application.credentials.dig(:minio, :region)
   config.x.minio.bucket = Rails.application.credentials.dig(:minio, :bucket)
 end

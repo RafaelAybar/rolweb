@@ -116,3 +116,7 @@ pg_twophase
 Editar credenciales desde Windows:
     $env:EDITOR="code --wait"
     rails credentials:edit
+
+migraciones de imágnes:
+rake img_uploader:migrate_db_to_minio
+rake img_uploader:migrate_minio_to_db

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "3.2.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
@@ -78,7 +78,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'httparty'
 
 # para tener un css más chulo
-gem 'sass-rails', '~> 6.0'
+# gem "dartsass-rails", "~> 0.5.1"
+gem "sassc", "~> 2.4"
 
 # paginación de modelos
 gem 'kaminari'
