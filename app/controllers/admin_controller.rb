@@ -44,7 +44,7 @@ class AdminController < ApplicationController
             self.response_body = Backup.create
         rescue => e
             Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
-            redirect_to "/backup"
+            redirect_to "/backup", alert: "Backup failed: #{e.message} in #{e.backtrace.first}"
         end
     end
 

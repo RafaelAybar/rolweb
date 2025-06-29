@@ -23,7 +23,8 @@ class ModelController < ApplicationController
       if @x.save
         redirect_to @x
       else
-        redirect_to "/control" , notice: 'La jodiste.'
+        Rails.logger.error "Error al crear el modelo #{@tipo.name}: #{@x.errors.full_messages.join(', ')}"
+        redirect_to "/control" , alert: "Error al crear el modelo #{@tipo.name}."
       end
     end
   
