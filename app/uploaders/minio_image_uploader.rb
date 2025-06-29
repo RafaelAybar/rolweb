@@ -48,4 +48,10 @@ class MinioImageUploader
   def remove!(record)
     @bucket.object(record.id.to_s).delete
   end
+
+  # Used only by backup
+  def all_ids
+    @bucket.objects.map &:key
+  end
+
 end

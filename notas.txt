@@ -1,6 +1,8 @@
 docker exec -it rolweb-web-1 bash
 
-reinstalar gemas:
+gemas:
+    gem install "gema"
+    bundle add "gema"
     bundle install
 
 

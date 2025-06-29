@@ -29,5 +29,37 @@ class AdminController < ApplicationController
         cache_delete "categorias"
         redirect_to "/control"
     end
+    
+    def backup
+    end
+
+
+    def create_backup
+        begin
+            file_name = "backup_#{Time.now.utc.strftime("%Y%m%d%H%M%S")}.tar.gz"
+            response.headers['Content-Type'] = 'application/gzip'
+            headers["Content-disposition"] = "attachment; filename=#{file_name}"
+            response.headers['Last-Modified'] = Time.now.httpdate
+
+            self.response_body = Backup.create
+        rescue => e
+            Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
+            redirect_to "/backup"
+        end
+    end
+
+    def restore_backup
+        # if params[:file].present?
+        #     begin
+        #         Backup.restore(params[:file].tempfile.path)
+        #         redirect_to control_path, notice: "Backup restored successfully."
+        #     rescue => e
+        #         Rails.logger.error "Restore failed: #{e.message} in #{e.backtrace.first}"
+        #         redirect_to "/backup", alert: "Restore failed: #{e.message} in #{e.backtrace.first}"
+        #     end
+        # else
+        #     redirect_to "/backup", alert: "No backup file provided."
+        # end
+    end
 end
 
