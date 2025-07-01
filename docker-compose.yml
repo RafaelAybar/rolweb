@@ -39,7 +39,3 @@ services:
       - ./minio_data:/data
     restart: always
     command: server /data --console-address ":9001"
-
-volumes:
-  db_data:
-  minio_data:

@@ -44,22 +44,23 @@ class AdminController < ApplicationController
             self.response_body = Backup.create
         rescue => e
             Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
+            Rails.logger.error e.backtrace.join("\n")
             redirect_to "/backup", alert: "Backup failed: #{e.message} in #{e.backtrace.first}"
         end
     end
 
     def restore_backup
-        # if params[:file].present?
-        #     begin
-        #         Backup.restore(params[:file].tempfile.path)
-        #         redirect_to control_path, notice: "Backup restored successfully."
-        #     rescue => e
-        #         Rails.logger.error "Restore failed: #{e.message} in #{e.backtrace.first}"
-        #         redirect_to "/backup", alert: "Restore failed: #{e.message} in #{e.backtrace.first}"
-        #     end
-        # else
-        #     redirect_to "/backup", alert: "No backup file provided."
-        # end
+        if params[:backup_file].present?
+            begin
+                Backup.restore(params[:backup_file].tempfile.path)
+                redirect_to "/backup", notice: "Backup restored successfully."
+            rescue => e
+                Rails.logger.error "Restore failed: #{e.message} in #{e.backtrace.first}"
+                redirect_to "/backup", alert: "Restore failed: #{e.message} in #{e.backtrace.first}"
+            end
+        else
+            redirect_to "/backup", alert: "No backup file provided."
+        end
     end
 end
 
