@@ -36,16 +36,19 @@ class AdminController < ApplicationController
 
     def create_backup
         begin
-            file_name = "backup_#{Time.now.utc.strftime("%Y%m%d%H%M%S")}.tar.gz"
-            response.headers['Content-Type'] = 'application/gzip'
-            headers["Content-disposition"] = "attachment; filename=#{file_name}"
-            response.headers['Last-Modified'] = Time.now.httpdate
-
-            self.response_body = Backup.create
+            backup_file = Backup.create
+            
+            send_file backup_file,
+                type: "application/gzip",
+                disposition: "attachment",
+                filename: File.basename(backup_file)
         rescue => e
             Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
             Rails.logger.error e.backtrace.join("\n")
             redirect_to "/backup", alert: "Backup failed: #{e.message} in #{e.backtrace.first}"
+          ensure
+            # File.delete(backup_file)
+            # Rails.logger.info "Deleted temporary backup file #{backup_file}"
         end
     end
 

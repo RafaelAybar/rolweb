@@ -1,6 +1,9 @@
 require "aws-sdk-s3"
 require "securerandom"
 
+class MinioConnectionError < StandardError
+end
+
 class MinioImageUploader
 
   def initialize
@@ -13,7 +16,7 @@ class MinioImageUploader
       force_path_style: true
     ).bucket(cfxm.bucket)
 
-    raise "No se pudo conectar a Minio" unless @bucket.exists?
+    raise MinioConnectionError, "No se pudo conectar a Minio" unless @bucket.exists?
   end
 
   def get(id)
