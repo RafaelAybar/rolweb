@@ -43,8 +43,7 @@ class AdminController < ApplicationController
             send_data data,
                 type: "application/gzip",
                 disposition: "attachment",
-                filename: File.basename(backup_file),
-                stream: false
+                filename: File.basename(backup_file)
         rescue => e
             Rails.logger.error "❌ Backup failed: #{e.message} in #{e.backtrace.first}"
             Rails.logger.error e.backtrace.join("\n")

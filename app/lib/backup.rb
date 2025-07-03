@@ -10,6 +10,9 @@ module Backup
   FileUtils.mkdir_p(BACKUPS_DIR) unless Dir.exist?(BACKUPS_DIR)
   
 
+  def self.time_now
+    Time.current.strftime("%Y-%m-%d_%H-%M-%S")
+  end
   
   def self.images_dir(dir)
     images_path = dir.join("images")
@@ -71,7 +74,7 @@ module Backup
 
   def self.create
     Rails.logger.info "🚀 Starting backup process..."
-    backup_name = "backup_#{Time.now.utc.strftime("%Y%m%d%H%M%S")}"
+    backup_name = "backup_#{time_now}"
     temp_dir = BACKUPS_DIR.join(backup_name)
     backup_path = BACKUPS_DIR.join("#{backup_name}.tar.gz")
 
@@ -141,7 +144,7 @@ module Backup
 
   def self.restore(file_path)
     Rails.logger.info "📦 Restoring backup from #{file_path}"
-    restore_id = Time.now.utc.strftime("%Y%m%d%H%M%S")
+    restore_id = time_now
     restore_dir = BACKUPS_DIR.join("restore_#{restore_id}")
     FileUtils.mkdir_p(restore_dir)
     
