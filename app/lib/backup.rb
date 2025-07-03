@@ -136,6 +136,14 @@ module Backup
         ActiveRecord::Base.connection.insert_fixture(record, table)
       end
     end
+
+    Rails.logger.info "🔢 Resetting ID sequences..."
+    DATA_TABLES.each do |table|
+      pk = ActiveRecord::Base.connection.primary_key(table)
+      next unless pk == "id"
+      max_id = ActiveRecord::Base.connection.select_value("SELECT MAX(id) FROM #{table}").to_i
+      ActiveRecord::Base.connection.execute("SELECT setval('#{table}_#{pk}_seq', #{max_id + 1}, false)")
+    end
   
     Rails.logger.info "✅ Database restored successfully."
   end
