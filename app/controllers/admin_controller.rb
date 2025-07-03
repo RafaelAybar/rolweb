@@ -37,18 +37,20 @@ class AdminController < ApplicationController
     def create_backup
         begin
             backup_file = Backup.create
-            
-            send_file backup_file,
+            data = File.binread(backup_file)
+
+            send_data data,
                 type: "application/gzip",
                 disposition: "attachment",
-                filename: File.basename(backup_file)
+                filename: File.basename(backup_file),
+                stream: false
         rescue => e
             Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
             Rails.logger.error e.backtrace.join("\n")
             redirect_to "/backup", alert: "Backup failed: #{e.message} in #{e.backtrace.first}"
           ensure
-            # File.delete(backup_file)
-            # Rails.logger.info "Deleted temporary backup file #{backup_file}"
+            File.delete(backup_file)
+            Rails.logger.info "🧹 Deleted temporary backup file #{backup_file}"
         end
     end
 
