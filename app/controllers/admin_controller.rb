@@ -24,9 +24,7 @@ class AdminController < ApplicationController
     end
 
     def delete_navbar_cache
-        cache_delete "clases_ocultas"
-        cache_delete "clases_visibles"
-        cache_delete "categorias"
+        inner_delete_navbar_cache
         redirect_to "/control"
     end
     
@@ -62,6 +60,7 @@ class AdminController < ApplicationController
         if params[:backup_file].present?
             begin
                 Backup.restore(params[:backup_file].tempfile.path)
+                inner_delete_navbar_cache
                 redirect_to "/backup", notice: "Backup restored successfully."
             rescue => e
                 Rails.logger.error "❌ Restore failed: #{e.message} in #{e.backtrace.first}"
@@ -71,6 +70,14 @@ class AdminController < ApplicationController
         else
             redirect_to "/backup", alert: "No backup file provided."
         end
+    end
+
+    private
+
+    def inner_delete_navbar_cache
+        cache_delete "clases_ocultas"
+        cache_delete "clases_visibles"
+        cache_delete "categorias"
     end
 end
 
