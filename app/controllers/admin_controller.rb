@@ -35,6 +35,7 @@ class AdminController < ApplicationController
 
 
     def create_backup
+        backup_file = nil
         begin
             backup_file = Backup.create
             data = File.binread(backup_file)
@@ -45,12 +46,16 @@ class AdminController < ApplicationController
                 filename: File.basename(backup_file),
                 stream: false
         rescue => e
-            Rails.logger.error "Backup failed: #{e.message} in #{e.backtrace.first}"
+            Rails.logger.error "❌ Backup failed: #{e.message} in #{e.backtrace.first}"
             Rails.logger.error e.backtrace.join("\n")
             redirect_to "/backup", alert: "Backup failed: #{e.message} in #{e.backtrace.first}"
-          ensure
-            File.delete(backup_file)
-            Rails.logger.info "🧹 Deleted temporary backup file #{backup_file}"
+        ensure
+            if backup_file && File.exist?(backup_file)
+                File.delete(backup_file)
+                Rails.logger.info "🧹 Deleted temporary backup file #{backup_file}"
+            else
+                Rails.logger.warn "⚠️ Temporary backup file #{backup_file} does not exist or was not created."
+            end
         end
     end
 
@@ -60,7 +65,8 @@ class AdminController < ApplicationController
                 Backup.restore(params[:backup_file].tempfile.path)
                 redirect_to "/backup", notice: "Backup restored successfully."
             rescue => e
-                Rails.logger.error "Restore failed: #{e.message} in #{e.backtrace.first}"
+                Rails.logger.error "❌ Restore failed: #{e.message} in #{e.backtrace.first}"
+                Rails.logger.error e.backtrace.join("\n")
                 redirect_to "/backup", alert: "Restore failed: #{e.message} in #{e.backtrace.first}"
             end
         else

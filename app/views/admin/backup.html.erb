@@ -1,9 +1,7 @@
 <h1>Backup y Restauración del Sistema</h1>
-<br>
-<p>
+<p style="margin: 30px;">
   <%= link_to "Descargar backup", create_backup_path, class: "btn btn-primary", download: true %>
 </p>
-<br>
 <hr>
 <%= form_with url: restore_backup_path, method: :post, multipart: true do %>
   <p>
