@@ -1,6 +1,8 @@
 docker exec -it rolweb-web-1 bash
 
-reinstalar gemas:
+gemas:
+    gem install "gema"
+    bundle add "gema"
     bundle install
 
 
@@ -117,6 +119,10 @@ Editar credenciales desde Windows:
     $env:EDITOR="code --wait"
     rails credentials:edit
 
-migraciones de imágnes:
-rake img_uploader:migrate_db_to_minio
-rake img_uploader:migrate_minio_to_db
+migraciones de imágenes:
+    rake img_uploader:migrate_db_to_minio
+    rake img_uploader:migrate_minio_to_db
+
+
+borrar caché
+    rails tmp:cache:clear

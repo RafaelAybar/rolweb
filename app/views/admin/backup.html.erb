@@ -1,0 +1,14 @@
+<h1>Backup y Restauración del Sistema</h1>
+<p style="margin: 30px;">
+  <%= link_to "Descargar backup", create_backup_path, class: "btn btn-primary", download: true %>
+</p>
+<hr>
+<%= form_with url: restore_backup_path, method: :post, multipart: true do %>
+  <p>
+    <label for="backup_file">Archivo de backup:</label>
+    <%= file_field_tag :backup_file %>
+  </p>
+  <p>
+    <%= submit_tag "Restaurar backup", data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>
+  </p>
+<% end %>
