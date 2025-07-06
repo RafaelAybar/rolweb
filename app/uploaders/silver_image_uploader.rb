@@ -24,7 +24,7 @@ class SilverImageUploader
     raise "DatabaseImageUploader.set: Nil file when trying to set image" if file.nil?
     
     file = self.class.to_webp(file)
-    Image.transaction do
+    ActiveRecord::Base.transaction do
       remove!(old_id)
       img = ImageUploaderConfig.uploader.add(file)
       @cache.store(img)
