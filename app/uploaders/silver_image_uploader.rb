@@ -55,7 +55,7 @@ class SilverImageUploader
       raise BadImageFileError, "El archivo no es una imagen válida"
     end
     
-    return file if image.mime_type == "image/webp"
+    return file if ["image/webp", "image/gif"].include?(image.mime_type)
 
     image.format("webp") do |f|
       f.quality Rails.application.config.webp_quality
