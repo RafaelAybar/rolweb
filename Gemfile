@@ -89,3 +89,6 @@ gem 'aws-sdk-s3', '~> 1.0'
 
 # para el backup
 gem "minitar", "~> 0.12.1"
+
+# manejo de imágenes
+gem "mini_magick", "~> 4.12"
