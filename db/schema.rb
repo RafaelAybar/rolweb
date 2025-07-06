@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_10_164630) do
+ActiveRecord::Schema[7.0].define(version: 2025_06_28_200337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -194,11 +194,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_10_164630) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mobsHasHabil", force: :cascade do |t|
+  create_table "mobs_has_habils", force: :cascade do |t|
     t.integer "mob_id"
     t.integer "habilidad_id"
-    t.index ["habilidad_id", "mob_id"], name: "index_mobsHasHabil_on_habilidad_id_and_mob_id"
-    t.index ["mob_id", "habilidad_id"], name: "index_mobsHasHabil_on_mob_id_and_habilidad_id"
+    t.index ["habilidad_id", "mob_id"], name: "index_mobs_has_habils_on_habilidad_id_and_mob_id"
+    t.index ["mob_id", "habilidad_id"], name: "index_mobs_has_habils_on_mob_id_and_habilidad_id"
   end
 
   create_table "pictures", force: :cascade do |t|

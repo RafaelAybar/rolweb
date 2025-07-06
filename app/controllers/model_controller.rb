@@ -19,27 +19,36 @@ class ModelController < ApplicationController
     end
   
     def new
-      @x = @tipo.new
+      # Recover forma data from rescue_my_errors redirect
+      @x = @tipo.new(flash[:form_data] || {})
     end
   
     def create
-      @x = @tipo.new(model_params)
-  
-      if @x.save
-        redirect_to @x
-      else
-        redirect_to "/control" , notice: 'La jodiste.'
+      rescue_my_errors :new do
+        @x = @tipo.new(model_params)
+    
+        if @x.save
+          redirect_to @x
+        else
+          Rails.logger.error "Error al crear el modelo #{@tipo.name}: #{@x.errors.full_messages.join(', ')}"
+          redirect_to "/control" , alert: "Error al crear el modelo #{@tipo.name}."
+        end
       end
     end
   
     def edit
+      @x = @tipo.find(params[:id])
     end
   
     def update
-      if @x.update(model_params)
-        redirect_to @x
-      else
-        render :edit
+      rescue_my_errors :edit do
+        @x = @tipo.find(params[:id])
+    
+        if @x.update(model_params)
+          redirect_to @x
+        else
+          render :edit
+        end
       end
     end
   
@@ -47,5 +56,18 @@ class ModelController < ApplicationController
       @x.destroy
   
       redirect_to @tipo
+    end
+
+    private
+
+    def rescue_my_errors(action_to_redirect)
+      begin
+        yield
+      rescue SilverImageUploader::BadImageFileError => e
+        Rails.logger.warn "BadImageFileError: #{e.message}"
+        flash[:alert] = e.message
+        flash[:form_data] = params[@tipo.model_name.param_key].except(:image)
+        redirect_to  action: action_to_redirect, id: params[:id]
+      end
     end
 end

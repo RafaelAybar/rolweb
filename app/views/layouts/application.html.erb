@@ -87,7 +87,27 @@
       </div>
       
     </div>
-  
+
+    <% # Divs para mostrar mensajes y alerta del sistema relacionados con el resutado de procesos %>
+    <% if notice || alert %>
+      <div class="flash-wrapper">
+        <% if notice %>
+          <div class="flash-notice">
+            <span class="flash-close" onclick="this.parentElement.remove()">✕</span>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="flash-alert">
+            <span class="flash-close" onclick="this.parentElement.remove()">✕</span>
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
+
     <%= yield %>
 
     

@@ -1,5 +1,11 @@
 docker exec -it rolweb-web-1 bash
 
+gemas:
+    gem install "gema"
+    bundle add "gema"
+    bundle install
+
+
 Para evitar romper la bd hacer commit de la bd con el contenedor apagado, si no:
 CUANDO SE JODE LA INTEGRIDAD DE LA BD:
     1º en el compose:
@@ -93,3 +99,11 @@ git config --global core.autocrlf false
 Editar credenciales desde Windows:
     $env:EDITOR="code --wait"
     rails credentials:edit
+
+migraciones de imágenes:
+    rake img_uploader:migrate_db_to_minio
+    rake img_uploader:migrate_minio_to_db
+
+
+borrar caché
+    rails tmp:cache:clear

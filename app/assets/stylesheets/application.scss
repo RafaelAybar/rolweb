@@ -22,7 +22,7 @@ $max-margin-media: 768px;
 
 @font-face{
     font-family:'Seagram';
-    src: font-url('Seagram_tfb.ttf') format('truetype');;
+    src: url('Seagram_tfb.ttf') format('truetype');
 }
 
 /*****************************
@@ -411,7 +411,7 @@ input {
 }
 
 .carta-description {
-    max-height: 200px;
+    max-height: 400px;
     overflow-y: auto;
     margin: 20px;
     margin-top: 5px;
@@ -606,7 +606,7 @@ input {
 }
 
 .etiqueta-boton {
-    // font-family: 'EB Garamond', serif;
+    /* font-family: 'EB Garamond', serif; */
     color: var(--c_black);
     margin-top: 10px;
     padding: 10px 20px;
@@ -665,7 +665,7 @@ input {
     gap: 5px;
     margin: 10px;
     padding: 0;
-    height: 74%;
+    height: 300px;
 }
 .mob-estabilidad { grid-area: estabilidad; }
 .mob-sangre { grid-area: sangre; }
@@ -767,4 +767,97 @@ img.arbol {
 }
 .admin-cuerpo .column:last-child {
     border-right: none;
+}
+
+
+/* FLASH NOTICES */
+
+.caca {
+    background-color: var(--c_contraste);
+}
+
+.flash-wrapper {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+}
+
+.flash-notice,
+.flash-alert {
+    padding: 15px 25px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    animation: flash-fade 0.5s ease-in-out;
+}
+
+.flash-notice {
+    background-color: var(--c_contraste);
+    color: var(--c_base);
+    border: 3px solid var(--c_base);
+}
+
+.flash-alert {
+    background-color: crimson;
+    color: white;
+    border: 3px solid black;
+}
+
+@keyframes flash-fade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.flash-close {
+  float: right;
+  margin-left: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.flash-close:hover {
+  opacity: 0.7;
+  transform: scale(1.2);
+  transition: all 0.2s ease;
+}
+
+
+
+/* BOTONES GENERALES */
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+  background-color: var(--c_alternativo);
+  color: var(--c_black);
+  border: 4px solid var(--c_base);
+}
+.btn-primary:hover {
+  background-color: var(--c_alternativo_alt);
+  transform: scale(1.02);
+}
+
+.btn-danger {
+  background-color: crimson;
+  color: var(--c_white);
+  border: 4px solid black;
+}
+.btn-danger:hover {
+  background-color: darkred;
+  transform: scale(1.02);
 }

@@ -31,6 +31,10 @@
 /config/master.key
 
 .backups
-db_data2
+db_data
 
+# Ni puta idea de donde sale esto, pero sique spawneando solo
 2
+
+# Es el volumen docker de minio
+minio_data
