@@ -23,6 +23,7 @@ class SilverImageUploader
   def set(file, old_id)
     raise "DatabaseImageUploader.set: Nil file when trying to set image" if file.nil?
     
+    file = self.class.to_webp(file)
     Image.transaction do
       remove!(old_id)
       img = ImageUploaderConfig.uploader.add(file)
@@ -39,5 +40,34 @@ class SilverImageUploader
     else
       Rails.logger.warn "DatabaseImageUploader#remove: Se ha intentado eliminar la imagen no existente, id: #{id}"
     end
+  end
+
+  class BadImageFileError < StandardError; end
+
+  private
+
+  require "mini_magick"
+  def self.to_webp(file)
+    begin
+      image = MiniMagick::Image.new(file.tempfile.path)
+      image.validate!
+    rescue
+      raise BadImageFileError, "El archivo no es una imagen válida"
+    end
+    
+    return file if image.mime_type == "image/webp"
+
+    image.format("webp") do |f|
+      f.quality Rails.application.config.webp_quality
+    end
+
+    tmpfile = Tempfile.new(["converted-", ".webp"], binmode: true)
+    image.write(tmpfile.path)
+
+    ActionDispatch::Http::UploadedFile.new(
+      filename: "#{File.basename(file.original_filename, '.*')}.webp",
+      type: "image/webp",
+      tempfile: tmpfile
+    )
   end
 end
