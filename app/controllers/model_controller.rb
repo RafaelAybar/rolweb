@@ -1,7 +1,7 @@
 # Clase base para los modelos. Requiere que se implemente model_params en su hija.
 class ModelController < ApplicationController
 
-    before_action :set, only: %i[show edit update destroy]
+    before_action :set, only: %i[show edit destroy]
     
     include AdminAccess
     restrict_admin_access
@@ -37,7 +37,6 @@ class ModelController < ApplicationController
     end
   
     def edit
-      @x = @tipo.find(params[:id])
     end
   
     def update
