@@ -1,8 +1,6 @@
 [This README is also available in Spanish](README_es.md).
 
 # README
-This respository uses **git lfs**.
-
 This application can run either as a couple of Docker containers (development mode) or as a normal Ruby on Rails application (production mode).
 
 ## Development mode
