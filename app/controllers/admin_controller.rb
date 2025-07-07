@@ -59,17 +59,21 @@ class AdminController < ApplicationController
     def restore_backup
         if params[:backup_file].present?
             begin
-                Backup.restore(params[:backup_file].tempfile.path)
+                Backup.restore(params[:backup_file].tempfile.path, params[:mode]=="1")
                 inner_delete_navbar_cache
                 redirect_to "/backup", notice: "Backup restored successfully."
-            rescue => e
-                Rails.logger.error "❌ Restore failed: #{e.message} in #{e.backtrace.first}"
-                Rails.logger.error e.backtrace.join("\n")
-                redirect_to "/backup", alert: "Restore failed: #{e.message} in #{e.backtrace.first}"
+            rescue Backup::BackupRestoreRecoveredError, Backup::BackupRestoreSchemaMissmatchError => e
+                Rails.logger.error "❌ Restore (#{params[:mode]=="1" ? "flexible" : "strict"}) failed: #{e.message}"
+                redirect_to "/backup", alert: "Restore failed: #{e.message}"
             end
         else
             redirect_to "/backup", alert: "No backup file provided."
         end
+    end
+
+    def delete_all_cache
+        cache_clear
+        redirect_to "/control"
     end
 
     private
@@ -78,11 +82,6 @@ class AdminController < ApplicationController
         cache_delete "clases_ocultas"
         cache_delete "clases_visibles"
         cache_delete "categorias"
-    end
-
-    def delete_all_cache
-        cache_clear
-        redirect_to "/control"
     end
 end
 

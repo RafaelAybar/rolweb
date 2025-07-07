@@ -1,22 +1,31 @@
 require "aws-sdk-s3"
 require "securerandom"
 
-class MinioConnectionError < StandardError
-end
+class MinioConnectionError < StandardError; end
 
 class MinioImageUploader
 
   def initialize
     cfxm = Rails.configuration.x.minio
-    @bucket = Aws::S3::Resource.new(
+    s3_resource = Aws::S3::Resource.new(
       endpoint: cfxm.endpoint,
       access_key_id: cfxm.access_key_id,
       secret_access_key: cfxm.secret_access_key,
       region: cfxm.region,
       force_path_style: true
-    ).bucket(cfxm.bucket)
+    )
+    @bucket = s3_resource.bucket(cfxm.bucket)
 
-    raise MinioConnectionError, "No se pudo conectar a Minio" unless @bucket.exists?
+    unless @bucket.exists?
+      begin
+        s3_resource.create_bucket(bucket: cfxm.bucket)
+      rescue => e
+        raise MinioConnectionError, "No se pudo crear el bucket '#{cfxm.bucket}': #{e.message}"
+      end
+      Rails.logger.warn "⚠️ Se ha creado el bucket '#{cfxm.bucket}' porque no existía."
+    end
+  rescue => e
+    raise MinioConnectionError, "No se pudo conectar a Minio: #{e.message}"
   end
 
   def get(id)

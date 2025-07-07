@@ -861,3 +861,14 @@ img.arbol {
   background-color: darkred;
   transform: scale(1.02);
 }
+
+.btn-warning {
+  background-color: #ffc107;
+  color: var(--c_black);
+  border: 4px solid black;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  transform: scale(1.02);
+}
