@@ -12,8 +12,18 @@
   <% end %>
 
   <div id="spoiler-text" style="<%="display: none;" if @x.spoilers%>">
-    <%= enlazar_nombres_conocidos(@x.texto.body.to_html) %>
+    <%= enlazar_nombres_conocidos(@x) %>
+
+    <% if @x.parents.any? %>
+      <div class="carta-subtitles">
+        <h4>🔗 Este artículo es nombrado en:</h3>
+        <% @x.parents.each do |parent| %>
+          <%= link_to parent.nombre, cuento_path(parent) %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+
 </div>
 
 <br>
