@@ -1,7 +1,7 @@
 <h1>Listado de artículos</h1>
 
 <p>
-  <% @xs.order(prioridad: :desc, nombre: :asc).each do |cuento| %>
+  <% @xs.order(prioridad: :desc, nombre: :desc).each do |cuento| %>
       <%=cuento.prioridad%>&nbsp;<%= link_to cuento.nombre, cuento %>
       <br>
   <% end %>

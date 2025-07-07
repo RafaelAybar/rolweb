@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :estadoalterados
   resources :dndspells
   resources :etiquets
+  resources :cuentos
 
   get 'images/:id/download', to: 'images#download', as: 'download_image'
   
