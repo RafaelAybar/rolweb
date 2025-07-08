@@ -20,7 +20,7 @@ class CuentosController < ModelController
   private
   def set_cuentos_childs
     @x.childs.clear
-    cuentos, regex = CuentosUtils.cuentos_regex(Cuento)
+    cuentos, regex = CuentosUtils.cuentos_regex(Cuento, @x)
     @x.texto.body.to_html.scan(regex) do |match|
       cuento = cuentos[match.first.downcase] 
       @x.childs << cuento unless @x.childs.include?(cuento)

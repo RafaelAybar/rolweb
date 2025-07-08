@@ -21,7 +21,8 @@ module NavbarHelper
 
   def main_cuento_path
     cache_fetch "cuento_first" do
-      cuento_path(Cuento.order(prioridad: :desc).first)
+      cuento = Cuento.order(prioridad: :desc).first
+      cuento.present? ? cuento_path(cuento) : "#"
     end
   end
 end
