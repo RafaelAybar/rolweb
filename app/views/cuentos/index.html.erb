@@ -1,9 +1,14 @@
-<h1>Listado de artículos</h1>
+<h1>Listado de cuentos</h1>
 
-<p>
+<ul style="list-style: none;">
   <% @xs.order(prioridad: :desc, nombre: :asc).each do |cuento| %>
+    <li>
+      <strong><%= cuento.prioridad %></strong>
       <%= link_to cuento.nombre, cuento %>
-      <br>
+      |
+      <%= link_to "Editar", edit_cuento_path(cuento) %>
+      |
+      <%= link_to "Eliminar", cuento_path(cuento), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+    </li>
   <% end %>
-</p>
-
+</ul>
