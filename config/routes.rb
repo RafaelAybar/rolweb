@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
   get '/reglas', to: 'info#reglas'
   get '/estadosAlterados', to: 'info#estadosAlterados'
-  get '/lore', to: 'info#lore'
   get '/avisolegal', to: 'info#avisolegal'
   get '/clases-arbol', to: 'info#arbol'
 
