@@ -27,6 +27,11 @@ class AdminController < ApplicationController
         inner_delete_navbar_cache
         redirect_to "/control"
     end
+
+    def delete_all_cache
+        cache_clear
+        redirect_to "/control"
+    end
     
     def backup
     end
@@ -71,17 +76,13 @@ class AdminController < ApplicationController
         end
     end
 
-    def delete_all_cache
-        cache_clear
-        redirect_to "/control"
-    end
-
     private
 
     def inner_delete_navbar_cache
         cache_delete "clases_ocultas"
         cache_delete "clases_visibles"
         cache_delete "categorias"
+        cache_delete "cuento_first"
     end
 end
 

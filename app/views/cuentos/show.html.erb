@@ -17,7 +17,7 @@
     <% if @x.parents.any? %>
       <div class="carta-subtitles">
         <h4>🔗 Este artículo es nombrado en:</h3>
-        <% @x.parents.each do |parent| %>
+        <% @x.parents.order(prioridad: :desc, nombre: :asc).each do |parent| %>
           <%= link_to parent.nombre, cuento_path(parent) %>
         <% end %>
       </div>

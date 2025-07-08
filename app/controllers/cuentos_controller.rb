@@ -6,13 +6,11 @@ class CuentosController < ModelController
   end
 
   def create
-    set_cuentos_childs
-    super
+    super {set_cuentos_childs}
   end
 
   def update
-    set_cuentos_childs
-    super
+    super {set_cuentos_childs}
   end
 
   def model_params

@@ -18,4 +18,10 @@ module NavbarHelper
       Categ.order(:nombre).to_a
     end
   end
+
+  def main_cuento_path
+    cache_fetch "cuento_first" do
+      cuento_path(Cuento.order(prioridad: :desc).first)
+    end
+  end
 end

@@ -26,7 +26,9 @@ class ModelController < ApplicationController
     def create
       rescue_my_errors :new do
         @x = @tipo.new(model_params)
-    
+        
+        yield if block_given? # For now only used by CuentosController
+
         if @x.save
           redirect_to @x
         else
@@ -42,6 +44,8 @@ class ModelController < ApplicationController
     def update
       rescue_my_errors :edit do
         @x = @tipo.find(params[:id])
+        
+        yield if block_given? # For now only used by CuentosController
     
         if @x.update(model_params)
           redirect_to @x
