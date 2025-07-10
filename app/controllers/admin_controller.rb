@@ -20,17 +20,17 @@ class AdminController < ApplicationController
 
     def delete_disk_cache
         DiskCache.clear_disk_cache!
-        redirect_to "/control"
+        redirect_to "/control", notice: "Caché de disco eliminada"
     end
 
     def delete_navbar_cache
         inner_delete_navbar_cache
-        redirect_to "/control"
+        redirect_to "/control", notice: "Caché de la barra de navegación eliminada"
     end
 
     def delete_all_cache
         cache_clear
-        redirect_to "/control"
+        redirect_to "/control", notice: "Caché de memoria eliminada"
     end
     
     def backup

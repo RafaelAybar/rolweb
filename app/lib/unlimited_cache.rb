@@ -13,7 +13,6 @@ module UnlimitedCache
   end
 
   def cache_clear
-    Rails.logger.debug "UnlimitedCache.cache_clear"
     @@memory_cache.clear
   end
 end

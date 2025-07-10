@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :dndspells
   resources :etiquets
   resources :cuentos
+  get '/recalcular_childs', to: 'cuentos#recalcular_childs'
 
   get 'images/:id/download', to: 'images#download', as: 'download_image'
   

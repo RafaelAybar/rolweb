@@ -1,4 +1,8 @@
 class CuentosController < ModelController
+  include AdminAccess
+  restrict_admin_access_to :index
+
+  include UnlimitedCache
 
   def initialize
     super 
@@ -17,6 +21,22 @@ class CuentosController < ModelController
     params.require(:cuento).permit(:nombre, :spoilers, :texto, :prioridad, :titulo, etiquet_ids: [], picture_ids: [])
   end
 
+  def recalcular_childs
+    cuentos_hash, regex = CuentosUtils.cuentos_regex(Cuento, false)
+
+    Cuento.find_each do |cuento|
+      cuento.childs.clear
+      cuento.texto.body.to_html.scan(regex) do |match|
+        referenced = cuentos_hash[match.first.downcase]
+        next if referenced == cuento
+        cuento.childs << referenced unless cuento.childs.include?(referenced)
+      end
+      cuento.save! if cuento.changed?
+    end
+    cache_clear
+    redirect_to cuentos_path, notice: "Todos los cuentos recalculados correctamente."
+  end
+
   private
   def set_cuentos_childs
     @x.childs.clear
@@ -24,7 +44,8 @@ class CuentosController < ModelController
     @x.texto.body.to_html.scan(regex) do |match|
       cuento = cuentos[match.first.downcase] 
       @x.childs << cuento unless @x.childs.include?(cuento)
-    end.html_safe
+    end
+    cache_delete "cuentos_html_#{@x.id}"
   end
 
 end
