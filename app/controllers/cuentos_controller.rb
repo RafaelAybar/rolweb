@@ -18,7 +18,7 @@ class CuentosController < ModelController
   end
 
   def model_params
-    params.require(:cuento).permit(:nombre, :spoilers, :texto, :prioridad, :titulo, etiquet_ids: [], picture_ids: [])
+    params.require(:cuento).permit(:nombre, :spoilers, :texto, :prioridad, :titulo, etiquet_ids: [], picture_ids: [], mob_ids: [])
   end
 
   def recalcular_childs

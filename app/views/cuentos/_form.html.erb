@@ -17,23 +17,18 @@
 
   <div>
     <%= form.label :prioridad %><br>
-    <%= form.number_field :prioridad, in: -10..10 %><br>
-  </div>
-
-  <div>
-    <%= form.label :etiquet_ids, "Etiquetas" %><br>
-    <%= form.collection_select :etiquet_ids, Etiquet.order(:nombre), :id, :nombre, {}, multiple: true, class: "form-select" %>
-  </div>
-
-  <div>
-    <%= form.label :picture_ids, "Imágenes" %><br>
-    <%= form.collection_select :picture_ids, Picture.order(:nombre), :id, :nombre, {}, multiple: true, class: "form-select" %>
+    <%= form.number_field :prioridad, in: -10..10, value: form.object.prioridad || 0 %><br>
   </div>
 
   <div>
     <%= form.label :texto %><br>
     <%= form.rich_text_area :texto %><br>
   </div>
+
+  
+  <%= render "shared/fcs", p:"etiquet", form: form %>
+  <%= render "shared/fcs", p:"picture", form: form %>
+  <%= render "shared/fcs", p:"mob", form: form %>
 
   <div>
     <%= form.submit %>

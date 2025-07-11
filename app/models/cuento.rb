@@ -4,6 +4,7 @@ class Cuento < ApplicationRecord
 
   has_and_belongs_to_many :etiquets
   has_and_belongs_to_many :pictures
+  has_and_belongs_to_many :mobs
 
   has_and_belongs_to_many :parents,
                           class_name: 'Cuento',

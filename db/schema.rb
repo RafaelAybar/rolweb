@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_07_08_194507) do
+ActiveRecord::Schema[7.0].define(version: 2025_07_11_094535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,6 +128,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_08_194507) do
     t.bigint "cuento_id", null: false
     t.bigint "etiquet_id", null: false
     t.index ["cuento_id", "etiquet_id"], name: "index_cuentos_etiquets_on_cuento_id_and_etiquet_id"
+  end
+
+  create_table "cuentos_mobs", id: false, force: :cascade do |t|
+    t.bigint "cuento_id", null: false
+    t.bigint "mob_id", null: false
   end
 
   create_table "cuentos_pictures", id: false, force: :cascade do |t|

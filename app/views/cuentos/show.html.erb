@@ -23,9 +23,17 @@
         </div>
         <% if @x.parents.any? %>
           <div class="carta-subtitles">
-            <h4>🔗 Este artículo es nombrado en:</h3>
+            <h4>🔗 Este artículo es nombrado en:</h4>
             <% @x.parents.order(prioridad: :desc, nombre: :asc).each do |parent| %>
-              <%= link_to parent.nombre, cuento_path(parent) %>
+              <%= link_to parent.nombre, parent %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @x.mobs.any? %>
+          <div class="carta-subtitles">
+            <h4>Mobs asociados (PELIGRO DE SPOILERS): </h4>
+            <% @x.mobs. each do |mob| %>
+              <%= link_to mob.nombre, mob %>
             <% end %>
           </div>
         <% end %>
