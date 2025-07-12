@@ -25,7 +25,7 @@
           <div class="carta-subtitles">
             <h4>🔗 Este artículo es nombrado en:</h4>
             <% @x.parents.order(prioridad: :desc, nombre: :asc).each do |parent| %>
-              <%= link_to parent.nombre, parent %>
+              <%= link_to parent.titulo, parent %>
             <% end %>
           </div>
         <% end %>

@@ -1,5 +1,5 @@
 class Cuento < ApplicationRecord
-  # nombre, spoilers, texto, prioridad
+  # nombre, titulo, spoilers, texto, prioridad
   has_rich_text :texto
 
   has_and_belongs_to_many :etiquets
