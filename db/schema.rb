@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_28_200337) do
+ActiveRecord::Schema[7.0].define(version: 2025_07_11_094535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,39 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_28_200337) do
     t.integer "child_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cuento_relations", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cuentos", force: :cascade do |t|
+    t.string "nombre"
+    t.boolean "spoilers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prioridad"
+    t.string "titulo"
+  end
+
+  create_table "cuentos_etiquets", id: false, force: :cascade do |t|
+    t.bigint "cuento_id", null: false
+    t.bigint "etiquet_id", null: false
+    t.index ["cuento_id", "etiquet_id"], name: "index_cuentos_etiquets_on_cuento_id_and_etiquet_id"
+  end
+
+  create_table "cuentos_mobs", id: false, force: :cascade do |t|
+    t.bigint "cuento_id", null: false
+    t.bigint "mob_id", null: false
+  end
+
+  create_table "cuentos_pictures", id: false, force: :cascade do |t|
+    t.bigint "cuento_id", null: false
+    t.bigint "picture_id", null: false
+    t.index ["cuento_id", "picture_id"], name: "index_cuentos_pictures_on_cuento_id_and_picture_id"
   end
 
   create_table "estadoalterados", force: :cascade do |t|

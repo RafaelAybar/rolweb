@@ -1,0 +1,67 @@
+<%# De texto_info cogemos los estilos para los enlaces, pero sobreescribimos los márgenes %>
+<div class="cuento-main
+            <%=" cuento-main_yes_images" if @x.pictures.any?%>
+            cuento-main_phone">
+
+  <h2><%= @x.titulo %></h1>
+  <h5>(<%= @x.nombre%>) </h5>
+
+  <% if @x.spoilers %>
+    <div id="cuento-spoiler_alert">
+      <strong>¡Cuidado! Este artículo tiene información sensible. Tal vez no quieras leerla para evitar spoilers.</strong><br>
+      <button onclick="document.getElementById('spoiler-text').style.display='block'; document.getElementById('cuento-spoiler_alert').style.display='none';">
+        ⚠️ MOSTRAR ⚠️
+      </button>
+    </div>
+  <% end %>
+
+  <div id="spoiler-text" style="<%="display: none;" if @x.spoilers%>">
+    <div class="cuento-content_text_and_imgs">
+      <div class="cuento-text">
+        <div class="texto_info">
+          <%= enlazar_nombres_conocidos(@x) %>
+        </div>
+        <% if @x.parents.any? %>
+          <div class="carta-subtitles">
+            <h4>🔗 Este artículo es nombrado en:</h4>
+            <% @x.parents.order(prioridad: :desc, nombre: :asc).each do |parent| %>
+              <%= link_to parent.titulo, parent %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @x.mobs.any? %>
+          <div class="carta-subtitles">
+            <h4>Mobs asociados (PELIGRO DE SPOILERS): </h4>
+            <% @x.mobs. each do |mob| %>
+              <%= link_to mob.nombre, mob %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @x.pictures.any? %>
+      <div class="cuento-images">
+        <% @x.pictures.each do |picture| %>
+          <%= render "shared/image_with_link", image: picture.image %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    
+    <% if @x.etiquets.any? %>
+      <div class="grid-container cuento-gallery">
+        <% @x.etiquets.each do |etiquet| %>
+          <% etiquet.pictures.each do |picture| %>
+            <%= render "pictures/picture", x: picture %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<br>
+<br>
+<%= link_to "Edit", edit_cuento_path(@x) %> |
+<%= link_to "Destroy", cuento_path(@x), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

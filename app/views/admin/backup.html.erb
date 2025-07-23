@@ -9,6 +9,7 @@
     <%= file_field_tag :backup_file %>
   </p>
   <p>
-    <%= submit_tag "Restaurar backup", data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>
+    <%= button_tag "Restaurar (modo estricto)", name: "mode", value: "0", type: "submit", class: "btn btn-warning", data: { confirm: "¿Estás seguro de restaurar en modo estricto?" } %>
+    <%= button_tag "Restaurar (modo tolerante)", name: "mode", value: "1", type: "submit", class: "btn btn-danger", data: { confirm: "¿Restaurar ignorando diferencias de esquema?" } %>
   </p>
 <% end %>

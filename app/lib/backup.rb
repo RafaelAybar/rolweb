@@ -100,21 +100,20 @@ module Backup
 
     Rails.logger.info "🧹 Deleting database..."
     ActiveRecord::Base.transaction do
-      (DATA_TABLES).each do |table|
+      DATA_TABLES.each do |table|
         ActiveRecord::Base.connection.execute("DELETE FROM #{table}")
       end
     end
-    
+
     begin
-      Rails.logger.info "🔍 Testing if conection to Minio is working..."
+      Rails.logger.info "📡 Connecting to Minio..."
       uper = MinioImageUploader.new
       Rails.logger.info "🗑️ Deleting Minio images..."
       uper.clear_all!
-      Rails.logger.info "✅ Minio images deleted."
 
-      Rails.logger.info "📷 Restoring images..."
+      Rails.logger.info "📷 Restoring Minio images..."
       metadata = JSON.parse(File.read(restore_dir.join("images_meta.json")))
-      imgdir = Backup.images_dir(restore_dir)
+      imgdir = images_dir(restore_dir)
       metadata.each do |entry|
         id = entry["id"]
         file_path = imgdir.join(id)
@@ -126,14 +125,17 @@ module Backup
         )
       end
     rescue MinioConnectionError => e
-      Rails.logger.warn "⚠️ Skipping Minio images restoration: #{e.message}"
+      Rails.logger.warn "⚠️ Skipping Minio image restore: #{e.message}"
     end
 
-    Rails.logger.info "📂 Restoring database..."
+    Rails.logger.info "💽 Restoring database data..."
     data = JSON.parse(File.read(restore_dir.join("database.json")))
     data.each do |table, records|
+      next unless DATA_TABLES.include?(table)
+      expected_columns = ActiveRecord::Base.connection.columns(table).map(&:name)
       records.each do |record|
-        ActiveRecord::Base.connection.insert_fixture(record, table)
+        filtered_record = record.slice(*expected_columns)
+        ActiveRecord::Base.connection.insert_fixture(filtered_record, table)
       end
     end
 
@@ -144,28 +146,39 @@ module Backup
       max_id = ActiveRecord::Base.connection.select_value("SELECT MAX(id) FROM #{table}").to_i
       ActiveRecord::Base.connection.execute("SELECT setval('#{table}_#{pk}_seq', #{max_id + 1}, false)")
     end
-  
-    Rails.logger.info "✅ Database restored successfully."
+
+    Rails.logger.info "✅ Database restore completed."
   end
 
 
 
-  def self.restore(file_path)
-    Rails.logger.info "📦 Restoring backup from #{file_path}"
+  class BackupRestoreRecoveredError < StandardError; end
+  class BackupRestoreSchemaMissmatchError < StandardError; end
+
+
+  def self.restore(file_path, flexible)
+    Rails.logger.info "📦 Restoring backup from #{file_path} (flexible: #{flexible})"
     restore_id = time_now
     restore_dir = BACKUPS_DIR.join("restore_#{restore_id}")
     FileUtils.mkdir_p(restore_dir)
-    
+
     Rails.logger.info "📥 Unpacking files"
     Zlib::GzipReader.open(file_path) do |gz|
       Minitar.unpack(gz, restore_dir.to_s)
     end
 
-    Rails.logger.info "🔍 Validating Database schema..."
-    backup_schema  = JSON.parse(File.read(restore_dir.join("schema.json")))
-    check_schema_matches!(backup_schema )
+    Rails.logger.info "🔍 Validating schema (strict mode)..."
+    backup_schema = JSON.parse(File.read(restore_dir.join("schema.json")))
+    missmatch = check_schema_matches(backup_schema)
+    if missmatch and flexible 
+      Rails.logger.warn "⚠️ Schema mismatch detected in flexible mode: \n#{missmatch}"
+    elsif missmatch and !flexible
+      raise BackupRestoreSchemaMissmatchError, "Schema mismatch detected in strict mode: \n#{missmatch}"
+    else
+      Rails.logger.info "✅ Schema matches."
+    end
 
-    Rails.logger.info "💾📸💾 Preparing snapshot copy for rollback..."
+    Rails.logger.info "📋 Preparing snapshot for rollback..."
     snapshot_path = BACKUPS_DIR.join("snapshot_#{restore_id}")
     silence_sql do
       prepare_backup_files(snapshot_path)
@@ -179,10 +192,10 @@ module Backup
       Rails.logger.error "❌ Error during restoration: #{e.message}"
       Rails.logger.error "🔁 Reverting to previous state..."
       silence_sql do
-        Backup.brave_restore(snapshot_path)
+        Backup.brave_restore(snapshot_path, false)
       end
       Rails.logger.info "✅ Successfully reverted."
-      raise
+      raise BackupRestoreRecoveredError, "Restoration failed but it was reverted to previous state: #{e.message}"
     ensure
       FileUtils.rm_rf(restore_dir)
       FileUtils.rm_rf(snapshot_path)
@@ -191,7 +204,7 @@ module Backup
 
 
 
-  def self.check_schema_matches!(backup_schema)
+  def self.check_schema_matches(backup_schema)
     current_schema = DATA_TABLES.to_h do |table|
       [table, ActiveRecord::Base.connection.columns(table).map(&:name).sort]
     end
@@ -221,8 +234,6 @@ module Backup
       end
     end
 
-    unless errors.empty?
-      raise "Database schema mismatch:\n- #{errors.join("\n- ")}"
-    end
+    errors.empty? ? false : errors.join("\n- ")
   end
 end

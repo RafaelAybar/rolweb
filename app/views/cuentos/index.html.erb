@@ -1,0 +1,17 @@
+<h1>Listado de cuentos</h1>
+
+<br>
+<%= link_to "Recalcular cuentos", "/recalcular_childs", style: "margin:40px"%>
+<br>
+<ul style="list-style: none;">
+  <% @xs.order(prioridad: :desc, nombre: :asc).each do |cuento| %>
+    <li>
+      <strong><%= cuento.prioridad %></strong>
+      <%= link_to cuento.nombre, cuento %>
+      |
+      <%= link_to "Editar", edit_cuento_path(cuento) %>
+      |
+      <%= link_to "Eliminar", cuento_path(cuento), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+    </li>
+  <% end %>
+</ul>

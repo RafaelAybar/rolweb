@@ -11,4 +11,8 @@ module UnlimitedCache
   def cache_delete key
     @@memory_cache.delete(key)
   end
+
+  def cache_clear
+    @@memory_cache.clear
+  end
 end

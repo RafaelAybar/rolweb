@@ -1,6 +1,6 @@
 [También tienes este README en inglés Spanish](README.md).
-# README (Español)  
 
+# README (Español)
 Esta aplicación puede ejecutarse como un par de contenedores de Docker (modo desarrollo) o como una aplicación normal de Ruby on Rails (modo producción).  
 
 ## Modo Desarrollo  

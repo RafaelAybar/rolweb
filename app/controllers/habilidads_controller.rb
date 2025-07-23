@@ -29,6 +29,6 @@ class HabilidadsController < ModelController
   end
 
   def model_params
-    params.require(:habilidad).permit(:nombre, :nivel, :efecto, :oculto, clase_ids: [], item_ids: [], categ_ids: [], mob_ids: [],mobsHasHabil_ids: [])
+    params.require(:habilidad).permit(:nombre, :nivel, :efecto, :oculto, clase_ids: [], item_ids: [], categ_ids: [], mob_ids: [])
   end
 end
