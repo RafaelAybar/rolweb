@@ -3,12 +3,10 @@
 <h1>Efectos alterados:</h1>
 
 <ul>
-    <div>
     <% @xs.sort_by(&:nombre).each do |x| %>
         <li><%= render "estadoalterados/estadoalterado", x: x%></li>
+        <br>
     <% end %>
-</div>
-
 </ul>
 
 </div>
