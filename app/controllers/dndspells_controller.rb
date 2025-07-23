@@ -1,5 +1,6 @@
 class DndspellsController < ApplicationController
-  
+  around_action :wrap_with_socket_error
+
   def initialize
     super
     @as = MydndapiService.new
@@ -26,9 +27,6 @@ class DndspellsController < ApplicationController
     @magicschools = @as.get("magicschools") 
   end
 
-  def error
-  end
-
   def update
     @x = @as.put("spells/#{params[:id]}", params)
     if @x
@@ -42,6 +40,15 @@ class DndspellsController < ApplicationController
   def destroy
     @x = @as.delete("spells/#{params[:id]}")
     redirect_to dndspells_path
+  end
+
+  def wrap_with_socket_error
+    yield
+  rescue SocketError => e
+    name = action_name.humanize
+    Rails.logger.error "❌ SocketError in #{name}: #{e.message}"
+    flash.now[:error] = "Error de conexión en la función #{name}: #{e.message}."
+    render 'shared/error', status: :service_unavailable
   end
 
 end
