@@ -4,6 +4,7 @@
             <%= x["level"] %> 
         </p>
         <%= link_to x["name"], "/dndspells/#{x["id"]}", class:"carta-title" %>
+        <%= link_to "Destroy", dndspell_path(x["id"]), style: "margin-left:20px", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </div>
 
     <div class="carta-subtitles">

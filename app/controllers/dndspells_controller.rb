@@ -1,4 +1,8 @@
 class DndspellsController < ApplicationController
+  
+  include AdminAccess
+  restrict_admin_access
+
   around_action :wrap_with_socket_error
 
   def initialize
@@ -14,7 +18,8 @@ class DndspellsController < ApplicationController
 
   def reset
     @as.get('reset', timeout: 600)
-    index
+    flash[:notice] = "Spells reset successfully."
+    redirect_to action: :index
   end
 
   def show
@@ -39,15 +44,16 @@ class DndspellsController < ApplicationController
 
   def destroy
     @x = @as.delete("spells/#{params[:id]}")
-    redirect_to dndspells_path
+    flash[:notice] = "Spell deleted successfully"
+    redirect_to action: :index
   end
 
   def wrap_with_socket_error
     yield
-  rescue SocketError => e
+  rescue SocketError, Errno::ECONNREFUSED, MydndapiService::UnexpectedResponseError => e
     name = action_name.humanize
     Rails.logger.error "❌ SocketError in #{name}: #{e.message}"
-    flash.now[:error] = "Error de conexión en la función #{name}: #{e.message}."
+    flash.now[:error] = "Error de conexión en la función #{name}: #{e.class.name} -- #{e.message}."
     render 'shared/error', status: :service_unavailable
   end
 
