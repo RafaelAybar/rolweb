@@ -499,11 +499,26 @@ input {
     object-fit: cover;
 }
 
-.carta-image_item {
-    margin: 20px;
+.carta_fixInnerImage {
+    display: flex;
+    flex-direction: row;
+    @media (max-width: $max-margin-media) {  flex-direction: column; }
+}
+
+.carta_fixInnerImage .carta-image {
+    padding: 20px;
+    width: fit-content;
+    height: fit-content;
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    margin: auto;
+}
+
+.carta_fixInnerImage .carta-image img {
+    width: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
 }
 
 .carta-subtitles a.clase {
