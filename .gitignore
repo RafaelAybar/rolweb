@@ -33,8 +33,11 @@
 .backups
 db_data
 
-# Ni puta idea de donde sale esto, pero sique spawneando solo
+# Ni puta idea de donde sale esto, pero sigue spawneando solo
 2
 
 # Es el volumen docker de minio
 minio_data
+
+# Configuración de workspace de VSCode
+.vscode

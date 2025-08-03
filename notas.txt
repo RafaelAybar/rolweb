@@ -25,7 +25,7 @@ Hacer dump de la base de datos, primero meterse en el server y luego:
     parece que es mejor hacerlo con pgAdmin
 
 
-Reestablecer credenciales de rails:
+Restablecer credenciales de rails:
 $env:EDITOR="code --wait"
 rails credentials:edit
 

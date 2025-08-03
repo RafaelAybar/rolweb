@@ -19,7 +19,7 @@ class ModelController < ApplicationController
     end
   
     def new
-      # Recover forma data from rescue_my_errors redirect
+      # Recover form data from rescue_my_errors redirect
       @x = @tipo.new(flash[:form_data] || {})
     end
   
