@@ -361,6 +361,12 @@ input {
     border-radius: 10px;
 }
 
+.carta_clase{
+    display: flex;
+    flex-direction: row;
+    @media (max-width: $max-margin-media) {  flex-direction: column; }
+}
+
 .carta_extendida {
     width:auto;
     height:auto;
@@ -458,17 +464,11 @@ input {
     background-color: var(--c_alternativo);
 }
 
-.carta-contents {
-    display: flex;
-    flex-direction: row;
-    @media (max-width: $max-margin-media) {  flex-direction: column; }
-}
-
 .carta-details {
     flex:auto;
     width: calc(var(--ancho_carta_clase)*0.6);
     @media (max-width: $max-margin-media) { width: 100%;}
-    max-height: calc(var(--alto_carta_clase)*0.8);
+    max-height: calc(var(--alto_carta_clase)*0.72);
     display: flex;
     flex-direction: column;
 }
@@ -487,12 +487,18 @@ input {
 }
 
 .carta-image {
-    max-width: calc(var(--ancho_carta_clase)*0.4);
-    max-height: calc(var(--alto_carta_clase)*0.75);
+    max-width: calc(var(--ancho_carta)*0.75);
+    max-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
+.carta-image_clase {
+    max-width: calc(var(--ancho_carta_clase)*0.4);
+    max-height: calc(var(--alto_carta_clase)*0.75);
+}
+
 .carta-image img {
     max-width: 100%;
     max-height: 100%;
@@ -506,7 +512,6 @@ input {
 }
 
 .carta_fixInnerImage .carta-image {
-    padding: 20px;
     width: fit-content;
     height: fit-content;
     max-width: 100%;
