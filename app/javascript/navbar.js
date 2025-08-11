@@ -1,4 +1,4 @@
-import { isMobile } from "isMobile";
+import { isTouchScreen } from "isTouchScreen";
 
 document.addEventListener("DOMContentLoaded", () => {
   const subnavbar = document.querySelector(".subnavbar");
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function setupMobileSubmenus() {
-    if (isMobile()) {
+    if (isTouchScreen()) {
       const all_submenus = subnavbar.querySelectorAll(".submenu");
       const all_submenu_contents = subnavbar.querySelectorAll(".submenu-content");
 
@@ -48,5 +48,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileSubmenus();
 
   // Update on resize
-  window.addEventListener("resize", updateScrollIndicator());
+  window.addEventListener("resize", updateScrollIndicator);
 });
