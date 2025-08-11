@@ -253,6 +253,12 @@ input {
     }
 }
 
+.mods-table .hide {
+    @media (max-width: $max-margin-media) {
+        display: none;
+    }
+}
+
 .mods-table p{
     border: 2px solid var(--c_base);
     padding: 4px;
