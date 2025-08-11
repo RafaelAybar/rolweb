@@ -14,32 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function setupMobileSubmenus() {
-    if (isTouchScreen()) {
-      const all_submenus = subnavbar.querySelectorAll(".submenu");
-      const all_submenu_contents = subnavbar.querySelectorAll(".submenu-content");
+    if (!isTouchScreen()) return;
 
-      all_submenus.forEach(submenu => {
-        const link = submenu.querySelector("a.nblink");
+    const all_submenus = subnavbar.querySelectorAll(".submenu");
+    const all_submenu_contents = subnavbar.querySelectorAll(".submenu-content");
 
-        if (link.classList.contains("nblink_notSubMenu")) return;
+    all_submenus.forEach(submenu => {
+      const link = submenu.querySelector("a.nblink");
 
-        let button = document.createElement("button");
-        button.className = link.className;
-        button.innerHTML = link.innerHTML;
-        link.parentNode.replaceChild(button, link);
+      if (link.classList.contains("nblink_notSubMenu")) return;
 
-        const content = submenu.querySelector(".submenu-content");
-        content.style.left = "0";
+      let button = document.createElement("button");
+      button.className = link.className;
+      button.innerHTML = link.innerHTML;
+      link.parentNode.replaceChild(button, link);
 
-        button.addEventListener("click", (e) => {
-          let currDisplay = content.style.display;
-          all_submenu_contents.forEach(sc => sc.style.display = "none");
-          if (currDisplay == "none") {
-            content.style.display = "block";
-          }
-        });
+      const content = submenu.querySelector(".submenu-content");
+      content.style.left = "0";
+
+      button.addEventListener("click", (e) => {
+        const isOpen = content.style.display === "block";
+        all_submenu_contents.forEach(sc => sc.style.display = "none");
+        subnavbar.querySelectorAll("button.nblink").forEach(btn => btn.classList.remove("open"));
+        if (!isOpen) {
+          content.style.display = "block";
+          button.classList.add("open");
+        }
       });
-    }
+    });
   }
 
 

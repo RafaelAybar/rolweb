@@ -146,7 +146,11 @@ input {
 }
 
 .subnavbar button.nblink::after {
-  content: " ▼";
+  content: " ►"; /* Cerrado */
+}
+
+.subnavbar button.nblink.open::after {
+  content: " ▼"; /* Abierto */
 }
 
 .subnavbar .nblink_notSubMenu {
