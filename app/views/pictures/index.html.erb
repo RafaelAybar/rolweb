@@ -1,8 +1,11 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag  "pictureEtiquets" %>
+<% end %>
+
 <% content_for :body_class, 'body-blackBackground' %>
 
-
 <%= form_with url: pictures_path, method: :get, local: true, class: 'etiqueta-filtro' do |form| %>
-    <%= form.label :etiquet_ids, "Filtrar por etiquetas:" %>
+    <p class="etiqueta-filtro_titulo"> Filtrar por etiquetas: </p>
     <%= form.collection_check_boxes :etiquet_ids, Etiquet.all.order(:nombre), :id, :nombre do |cb| %>
         <div class="etiqueta-item">
             <%= render "etiquets/etiqueta", x: cb.object %>
@@ -17,11 +20,10 @@
 
 <div class="grid-container blackBackground">
     <% @xs.each do |x| %>
-        <%= render "picture", x: x%>
+        <%= render "picture", x: x %>
     <% end %>
 </div>
 
-<!-- Agregar enlaces de paginación -->
 <div class="pagination">
   <%= paginate @xs %>
 </div>

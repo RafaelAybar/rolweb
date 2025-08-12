@@ -695,11 +695,6 @@ input {
     display: inline-block;
 }
 
-.etiqueta:hover {
-    color: var(--c_base);
-    background-color: var(--c_alternativo);
-}
-
 .etiqueta-filtro{
     background-color: var(--c_contraste);
     padding: 5px;
@@ -708,10 +703,44 @@ input {
     border-radius: 5px;
 }
 
+.etiqueta-filtro_titulo {
+    color: var(--c_base);
+    margin: 7px;
+}
+
 
 .etiqueta-item {
-    margin-right: 10px;
     display: inline-block;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.etiqueta-item:hover {
+    transform: translateY(-3px);
+}
+
+.etiqueta-item .etiqueta {
+    // margin: 0;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 
+        inset -2px -2px 4px rgba(0, 0, 0, 0.8),
+        inset 2px 2px 6px rgba(255, 255, 255, 0.9)
+}
+
+.etiqueta-item.active {
+    background-color: var(--c_alternativo);
+}
+
+.etiqueta-item.active .etiqueta {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 4px 4px 10px rgba(0, 0, 0, 0.9),
+        inset -1px -1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.etiqueta-item input {
+    display: none; /* Oculta el checkbox */
 }
 
 .etiqueta-boton {
