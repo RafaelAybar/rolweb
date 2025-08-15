@@ -1,10 +1,20 @@
 <%# De texto_info cogemos los estilos para los enlaces, pero sobreescribimos los márgenes %>
+<% only_admin_content do %>
+    <div class="admin-actions">
+        <%= link_to "Edit", edit_cuento_path(@x), class: "btn btn-primary" %>
+        <%= link_to "Destroy", cuento_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+<% end %>
+
 <div class="cuento-main
             <%=" cuento-main_yes_images" if @x.pictures.any?%>
             cuento-main_phone">
 
   <h2><%= @x.titulo %></h1>
-  <h5>(<%= @x.nombre%>) </h5>
+  
+  <% only_admin_content do %>
+    <h5>(<%= @x.nombre%>) </h5>
+  <% end %>
 
   <% if @x.spoilers %>
     <div id="cuento-spoiler_alert">
@@ -60,8 +70,3 @@
 
   </div>
 </div>
-
-<br>
-<br>
-<%= link_to "Edit", edit_cuento_path(@x) %> |
-<%= link_to "Destroy", cuento_path(@x), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

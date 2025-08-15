@@ -12,4 +12,11 @@ module ApplicationHelper
       javascript_import_module_tag(module_name)
     end
   end
+
+  def only_admin_content(&block)
+    if session[:admin]
+      yield
+    end
+  end
+  
 end

@@ -1,3 +1,9 @@
+<% only_admin_content do %>
+    <div class="admin-actions">
+        <%= link_to "Edit", edit_item_path(@x), class: "btn btn-primary" %>
+        <%= link_to "Destroy", item_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+<% end %>
 
 <div class="miniListadoClases">
     <% @x.categs.each do |ct| %>
@@ -18,6 +24,3 @@
 
 <h1>Lista de Hablidades relacionadas:</h1>
 <%= render "habilidads/lista", habilidades: @x.habilidads%>
-
-<%= link_to "Edit", edit_item_path(@x) %>
-<%= link_to "Destroy", item_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

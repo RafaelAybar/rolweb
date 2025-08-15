@@ -1,3 +1,10 @@
+<% only_admin_content do %>
+    <div class="admin-actions">
+        <%= link_to "Edit", edit_categ_path(@x), class: "btn btn-primary" %>
+        <%= link_to "Destroy", categ_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+<% end %>
+
 <div class="clase-main">
     <%= render "categ", x: @x %>
 <div>
@@ -17,6 +24,3 @@
         <% end %>
     </div>
 <% end %>
-
-<%= link_to "Edit", edit_categ_path(@x) %>
-<%= link_to "Destroy", categ_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

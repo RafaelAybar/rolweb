@@ -908,8 +908,16 @@ img.arbol {
     padding: 10px;
     border-right: 1px solid #ddd;
 }
+
 .admin-cuerpo .column:last-child {
     border-right: none;
+}
+
+.admin-actions {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 

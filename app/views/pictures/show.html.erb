@@ -1,3 +1,10 @@
+<% only_admin_content do %>
+    <div class="admin-actions">
+        <%= link_to "Edit", edit_picture_path(@x), class: "btn btn-primary" %>
+        <%= link_to "Destroy", picture_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+<% end %>
+
 <% content_for :body_class, 'body-blackBackground' %>
 
 <h1><%= @x.nombre %></h1>
@@ -8,6 +15,3 @@
 <% @x.etiquets.sort_by(&:nombre).each do |x| %>
     <%= render "etiquets/etiqueta", x:x%>
 <% end %>
-<br>
-<%= link_to "Edit", edit_picture_path(@x) %>
-<%= link_to "Destroy", picture_path(@x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
