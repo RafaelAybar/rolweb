@@ -1045,6 +1045,15 @@ img.arbol {
   line-height: 1.2;
 }
 
+.home-intro a {
+  color: var(--c_base);
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    color: var(--c_base_alt);
+  }
+}
+
 
 .section-content {
   margin-top: 0;
