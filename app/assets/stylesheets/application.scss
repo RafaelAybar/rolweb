@@ -1028,20 +1028,11 @@ img.arbol {
 
 
 
-
-
-
-
 /* HOME */
-
-.home{
-
-}
 
 .home-intro {
   background-color: var(--c_contraste);
   color: var(--c_black);
-//   padding: 2rem;
   text-align: center;
 }
 
@@ -1055,7 +1046,6 @@ img.arbol {
 }
 
 
-/* === Layout === */
 .section-content {
   margin-top: 0;
   margin-bottom: 0;
@@ -1090,7 +1080,6 @@ img.arbol {
   height: 200px;
 }
 
-/* === Buttons === */
 .home-features-card a {
   margin: 10px;
   background-color: var(--c_base);
@@ -1128,7 +1117,6 @@ img.arbol {
   }
 }
 
-/* === Random Generator Result === */
 .home-random-result {
   margin-top: 1rem;
   display: flex;
