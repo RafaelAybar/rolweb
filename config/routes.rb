@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "info#reglas"
+  root "info#home"
   resources :clases
   resources :habilidads
   resources :items
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/estadosAlterados', to: 'info#estadosAlterados'
   get '/avisolegal', to: 'info#avisolegal'
   get '/clases-arbol', to: 'info#arbol'
+  get '/get_random_element', to: 'info#get_random_element'
 
   get '/control', to: 'admin#control'
   get '/items_no_categ', to: 'admin#items_no_categ'

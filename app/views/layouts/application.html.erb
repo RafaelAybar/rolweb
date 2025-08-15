@@ -12,8 +12,8 @@
   </head>
 
   <body <%= content_for?(:body_class) ? "class=#{yield(:body_class)}" : '' %>>
-    <div class="navbar">
-      <h1>Varacia</h1>
+    <nav class="navbar">
+      <h1><%= link_to "Varacia", root_path %></h1>
       <div class="subnavbar">
 
         <div class="submenu">
@@ -21,7 +21,7 @@
           <div class="submenu-content">
               <a href="/reglas">Reglas</a>
               <a href="/estadosAlterados">Estados Alterados</a>
-              <%= link_to "lore", main_cuento_path%>
+              <%= link_to "Historias y trasfondo", main_cuento_path%>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
 
         <%= image_tag "scroll.png", class:"subnavbar-scroll_indicator"%>
       </div>
-    </div>
+    </nav>
 
     <% # Divs para mostrar mensajes y alerta del sistema relacionados con el resutado de procesos %>
     <% if notice || alert %>

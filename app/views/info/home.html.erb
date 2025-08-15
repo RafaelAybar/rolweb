@@ -1,0 +1,86 @@
+<%= importJS "homeRandomGenerator" %>
+
+<div class="home-container">
+
+  <!-- INTRODUCTION -->
+  <section class="home-intro">
+    <div class="section-content texto_info-margins">
+      <h2>¿Qué es Varacia?</h2>
+      <p>
+        Varacia es un sistema de rol de mesa original centrado en la accesibilidad para nuevos jugadores y la profundidad y complejidad para veteranos.
+        Aunque tiene su propio mundo, su diseño es flexible para adaptarse a cualquier universo. Siempre en desarrollo, se pretende que haya contenido para absolutamente todo.
+      </p>
+      <p>
+        En esta página encontrarás todo lo necesario para aprender a jugar, crear personajes y explorar el mundo de Varacia.
+      </p>
+      <p>
+        Actualmente todo el contenido es completamente gratuito y a diposición pública.
+        <%= link_to "Puedes aprender a jugar aquí", "/reglas" %>
+      </p>
+    </div>
+  </section>
+
+  <div class="home-features">
+    <!-- Panel 1 -->
+    <div class="home-features-card">
+      <div class="home-features-card-image">
+        <%= render "shared/image", image: @clase_image %>
+      </div>
+      <h2>Clases</h2>
+      <p>Explora más de 50 clases distintas, cada una con su propia mecánica que la hace única y te permite jugar de forma completamente diferente. </p>
+      <br>
+      <%= link_to "Ver clases", clases_path %>
+      
+    </div>
+    <!-- Panel 2 -->
+    <div class="home-features-card">
+      <div class="home-features-card-image">
+        <%= render "shared/image", image: @habilidad_image %>
+      </div>
+      <h2>Habilidades</h2>
+      <p>Conoce las razas que habitan Varacia y sus habilidades únicas.</p>
+      <br>
+      <%= link_to "Ver habilidades", clases_path %>
+    </div>
+    <!-- Panel 3 -->
+    <div class="home-features-card">
+      <div class="home-features-card-image">
+        <%= render "shared/image", image: @item_image %>
+      </div>
+      <h2>Ítems</h2>
+      <p>Descubre artefactos mágicos y herramientas que cambiarán tu aventura.</p>
+      <br>
+      <%= link_to "Ver objetos", items_path %>
+    </div>
+  </div>
+
+  <section class="home-random">
+    <div class="section-content texto_info-margins">
+      <h2>Elemento aleatorio</h2>
+      <p>Obtén una clase, habilidad o ítem al azar para inspirar tu próxima partida.</p>
+      <button id="random-generator-btn">Generar Aleatorio</button>
+      <div id="random-result" class="home-random-result"></div>
+    </div>
+  </section>
+
+  <section class="home-carousel">
+    <h2> <%= link_to "Galería de Aventuras", pictures_path %></h2>
+    <div class="home-carousel-container">
+      <% @carousel_images.each do |image|%>
+        <div class="home-carousel-item">
+          <%= render "shared/image_with_link", image: image %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="home-map ">
+    <div class="section-content texto_info-margins">
+      <h2> <%= link_to "Explora Varacia", main_cuento_path %> </h2>
+      <p> Explora el mundo de Varacia y sus historias.</p>
+      <%= image_tag "map.webp" %>
+    </div>
+  </section>
+
+</div>
