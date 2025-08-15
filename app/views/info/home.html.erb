@@ -1,4 +1,4 @@
-<!-- app/views/pages/home.html.erb -->
+<%= importJS "homeRandomGenerator" %>
 
 <div class="home-container">
 
@@ -53,14 +53,12 @@
     </div>
   </div>
 
-  <!-- RANDOM GENERATOR PLACEHOLDER -->
   <section class="home-random">
     <div class="section-content texto_info-margins">
       <h2>Elemento aleatorio</h2>
       <p>Obtén una clase, habilidad o ítem al azar para inspirar tu próxima partida.</p>
       <button id="random-generator-btn">Generar Aleatorio</button>
-      <div id="random-result" class="random-result"></div>
-      <!-- TODO: Implementar lógica JS para obtener elemento aleatorio -->
+      <div id="random-result" class="home-random-result"></div>
     </div>
   </section>
 

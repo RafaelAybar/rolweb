@@ -1124,15 +1124,15 @@ img.arbol {
   &:hover {
     background-color: var(--c_white);
     color: var(--c_black);
+    cursor: pointer;
   }
 }
 
 /* === Random Generator Result === */
-.random-result {
+.home-random-result {
   margin-top: 1rem;
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  font-style: italic;
+  display: flex;
+  justify-content: center;
 }
 
 .home-carousel {

@@ -5,6 +5,17 @@ class InfoController < ApplicationController
         @item_image = Item.where("image IS NOT NULL").order("RANDOM()").first.image || nil
         @carousel_images = Picture.order("RANDOM()").limit(10).map(&:image)
     end
+
+    def get_random_element
+        model = [Clase, Habilidad, Item].sample
+        element = model.order("RANDOM()").first
+        render partial: element, locals: {
+            Clase    => { clase: element },
+            Habilidad => { habil: element },
+            Item     => { item: element }
+        }[model]
+    end
+
     def reglas
     end
 
