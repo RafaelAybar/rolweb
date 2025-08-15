@@ -15,6 +15,7 @@
       </p>
       <p>
         Actualmente todo el contenido es completamente gratuito y a diposición pública.
+        <%= link_to "Puedes aprender a jugar aquí", "/reglas" %>
       </p>
     </div>
   </section>
@@ -28,7 +29,7 @@
       <h2>Clases</h2>
       <p>Explora más de 50 clases distintas, cada una con su propia mecánica que la hace única y te permite jugar de forma completamente diferente. </p>
       <br>
-      <%= link_to "Ver Clases", clases_path %>
+      <%= link_to "Ver clases", clases_path %>
       
     </div>
     <!-- Panel 2 -->
@@ -39,7 +40,7 @@
       <h2>Habilidades</h2>
       <p>Conoce las razas que habitan Varacia y sus habilidades únicas.</p>
       <br>
-      <%= link_to "Ver Razas", clases_path %>
+      <%= link_to "Ver habilidades", clases_path %>
     </div>
     <!-- Panel 3 -->
     <div class="home-features-card">
@@ -49,7 +50,7 @@
       <h2>Ítems</h2>
       <p>Descubre artefactos mágicos y herramientas que cambiarán tu aventura.</p>
       <br>
-      <%= link_to "Ver Objetos", items_path %>
+      <%= link_to "Ver objetos", items_path %>
     </div>
   </div>
 
@@ -76,7 +77,7 @@
   <!-- MAP SECTION -->
   <section class="home-map ">
     <div class="section-content texto_info-margins">
-      <h2> <%= link_to "Explora Varacia", "/lore" %> </h2>
+      <h2> <%= link_to "Explora Varacia", main_cuento_path %> </h2>
       <p> Explora el mundo de Varacia y sus historias.</p>
       <%= image_tag "map.webp" %>
     </div>
