@@ -1032,113 +1032,156 @@ img.arbol {
 
 
 
-/* Hero section */
-.hero-section {
-  background: url('/images/placeholder-hero.jpg') center/cover no-repeat;
-  color: var(--c_base); /* tono pergamino */
-  padding: 6rem 2rem;
+/* HOME */
+
+.home{
+
+}
+
+.home-intro {
+  background-color: var(--c_contraste);
+  color: var(--c_black);
+//   padding: 2rem;
   text-align: center;
 }
-.hero-title {
-  font-size: 3rem;
-  font-family: 'Cinzel', serif; /* fuente épica medieval */
-}
-.hero-subtitle {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin: 1rem auto;
-}
-.btn-primary {
-  background: #8b4513;
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 6px;
-  text-decoration: none;
+
+.home-intro h2 {
+  color: var(--c_base);
 }
 
-/* Sections */
+.home-intro p {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+
+/* === Layout === */
 .section-content {
-  max-width: 900px;
-  margin: auto;
-  padding: 3rem 2rem;
-}
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.section-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2rem 1rem;
+  align-items: center;
 }
 
-/* Features grid */
-.features-grid {
+.home-features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-}
-.feature-card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #c8a165;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-}
-.feature-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.feature-body {
-  padding: 1rem;
-}
-.btn-secondary {
-  background: #c8a165;
-  color: #000;
-  padding: 0.5rem 1.5rem;
-  text-decoration: none;
-  border-radius: 4px;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
 }
 
-/* Random generator */
-.random-generator-section {
-  background: #1a1a1a;
-  color: #f5e6c4;
-  padding: 3rem 2rem;
+.home-features-card {
+  background-color: var(--c_alternativo);
+  padding: 1.5rem;
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
 }
-.btn-outline {
-  border: 1px solid #c8a165;
+.home-features-card-image {
+    display: flex;
+    justify-content: center;
+}
+
+.home-features-card-image img {
+  height: 200px;
+}
+
+/* === Buttons === */
+.home-features-card a {
+  margin: 10px;
+  background-color: var(--c_base);
+  color: var(--c_white);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--c_base_alt);
+  }
+}
+
+.home-random {
+    background-color: var(--c_base);
+    color: var(--c_white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.home-random button {
+  display: inline-block;
   background: transparent;
-  color: #c8a165;
-  padding: 0.5rem 1.5rem;
+  color: var(--c_white);
+  border: 2px solid var(--c_white);
+  font-family: 'Seagram', serif;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--c_white);
+    color: var(--c_black);
+  }
 }
+
+/* === Random Generator Result === */
 .random-result {
   margin-top: 1rem;
+  font-family: 'EB Garamond', serif;
   font-size: 1.2rem;
+  font-style: italic;
 }
 
-/* Carousel */
-.carousel-section {
-  padding: 3rem 2rem;
+.home-carousel {
+  background-color: var(--c_white);
+  color: var(--c_black);
+  padding: 2rem;
+  text-align: center;
+  padding-bottom: 4rem;
 }
-.carousel-container {
+
+.home-carousel a {
+  color: var(--c_base);
+  &:hover {
+    color: var(--c_base_alt);
+  }
+}
+
+.home-carousel-container {
   display: flex;
-  gap: 1rem;
   overflow-x: auto;
-}
-.carousel-item img {
-  height: 250px;
-  border-radius: 8px;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-/* Map */
-.map-section {
-  background: #0f0f0f;
-  padding: 3rem 2rem;
+.home-carousel-item {
+  min-width: 300px;
 }
-.map-image {
+
+.home-carousel-item img {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.home-map {
+  background-color: var(--c_contraste);
+  color: var(--c_black);
+  text-align: center;
+}
+
+.home-map a {
+  color: var(--c_base);
+  &:hover {
+    color: var(--c_base_alt);
+  }
+}
+
+.home-map img {
   max-width: 100%;
-  border: 2px solid #c8a165;
-  border-radius: 8px;
+  margin-top: 1rem;
+  border-radius: 20px;
 }

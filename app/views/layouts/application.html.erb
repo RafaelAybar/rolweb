@@ -12,7 +12,7 @@
   </head>
 
   <body <%= content_for?(:body_class) ? "class=#{yield(:body_class)}" : '' %>>
-    <div class="navbar">
+    <nav class="navbar">
       <h1><%= link_to "Varacia", root_path %></h1>
       <div class="subnavbar">
 
@@ -77,7 +77,7 @@
 
         <%= image_tag "scroll.png", class:"subnavbar-scroll_indicator"%>
       </div>
-    </div>
+    </nav>
 
     <% # Divs para mostrar mensajes y alerta del sistema relacionados con el resutado de procesos %>
     <% if notice || alert %>
