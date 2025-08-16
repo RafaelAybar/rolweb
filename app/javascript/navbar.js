@@ -4,11 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const subnavbar = document.querySelector(".subnavbar");
   const scrollIndicator = document.querySelector(".subnavbar-scroll_indicator");
 
+  function updateIndicatorVisibility() {
+    const atEnd = subnavbar.scrollLeft + subnavbar.clientWidth >= subnavbar.scrollWidth - 1;
+    scrollIndicator.style.display = atEnd ? "none" : "block";
+  }
+
   function updateScrollIndicator() {
     if (subnavbar.scrollWidth > subnavbar.clientWidth) {
       scrollIndicator.style.display = "block";
+      subnavbar.addEventListener("scroll", updateIndicatorVisibility);
     } else {
       scrollIndicator.style.display = "none";
+      subnavbar.removeEventListener("scroll", updateIndicatorVisibility);
     }
   }
 

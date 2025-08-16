@@ -57,8 +57,8 @@
           <%= link_to "Galería", pictures_path, class:"nblink nblink_notSubMenu" %>
         </div>
 
-        <div class="submenu">
-          <% if session[:admin] %>
+        <% only_admin_content do %>
+          <div class="submenu">
             <a href="/control" class="nblink">Admin</a>
             <div class="submenu-content">
               <%= link_to "Panel de control", "/control" %>
@@ -75,10 +75,8 @@
               <%= link_to "Crear etiqueta", new_etiquet_path %>
               <%= link_to "Crear cuento", new_cuento_path %>
             </div>
-          <% else %>
-            <%= link_to "Admin", "/control", class: "nblink nblink_notSubMenu"%>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
 
         <%= image_tag "scroll.png", class:"subnavbar-scroll_indicator"%>
       </div>
@@ -109,6 +107,8 @@
     
     <footer class="footbar">
       <%= link_to "Aviso legal", "/avisolegal"%>
+      <br>
+      <%= link_to "Admin access", new_adminsession_path %>
     </footer>
 
   </body>
