@@ -409,6 +409,11 @@ input {
 }
 
 .carta_clase{
+    border: 4px solid var(--c_base);
+
+    width: var(--ancho_carta_clase);
+    height: var(--alto_carta_clase);
+
     display: flex;
     flex-direction: row;
     @media (max-width: $max-margin-media) {  flex-direction: column; }
@@ -417,14 +422,6 @@ input {
 .carta_extendida {
     width:auto;
     height:auto;
-}
-
-.carta_clase {
-    border: 4px solid var(--c_base);
-
-    width: var(--ancho_carta_clase);
-    height: var(--alto_carta_clase);
-
 }
 
 .carta-header {
@@ -452,6 +449,11 @@ input {
     font-size: larger;
     display: inline-block;
     margin: 5px;
+}
+
+.carta-isactive {
+    margin-left: 10px;
+    height: 35px;
 }
 
 .carta-coste {
