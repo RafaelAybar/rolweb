@@ -1,0 +1,26 @@
+<h2>Clasificar habilidad</h2>
+
+<p>
+  <strong><%= @pendientes %></strong> habilidades restantes por clasificar.  
+</p>
+
+
+<% if @habilidad %>
+  <div class="clase-main">
+      <div class="carta carta_extendida texto_info-margins">
+          <%= render "habilidads/habilidad_inner", habil:  @habilidad%>
+      </div>
+  </div>
+
+  <%= form_with model: @habilidad, url: habilidad_path(@habilidad, from_clasificar: true), method: :patch do |form| %>
+    <%= form.hidden_field :from_clasificar, value: true %>
+    <div style="diplay:flex; text-align: center;">
+      <%= button_tag "Activa",      type: :submit, name: "habilidad[tipo]", value: 0, class: "btn", style: "background-color:#FFB3B3" %>
+      <%= button_tag "Pasiva",      type: :submit, name: "habilidad[tipo]", value: 1, class: "btn", style: "background-color:#99CCFF" %>
+      <%= button_tag "Otro tipo",   type: :submit, name: "habilidad[tipo]", value: 2, class: "btn", style: "background-color:#FFCC99" %>
+      <%= button_tag "Complemento", type: :submit, name: "habilidad[tipo]", value: 3, class: "btn", style: "background-color:#CBA6F7" %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No hay habilidades pendientes 🎉</p>
+<% end %>

@@ -45,7 +45,7 @@ class ModelController < ApplicationController
       rescue_my_errors :edit do
         @x = @tipo.find(params[:id])
         
-        yield if block_given? # For now only used by CuentosController
+        yield if block_given? # For now only used by CuentosController and HabilidadsController
     
         if @x.update(model_params)
           redirect_to @x

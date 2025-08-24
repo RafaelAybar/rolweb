@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_07_11_094535) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_24_161129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -167,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_11_094535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "oculto", default: false
+    t.integer "tipo"
   end
 
   create_table "habilidads_items", id: false, force: :cascade do |t|

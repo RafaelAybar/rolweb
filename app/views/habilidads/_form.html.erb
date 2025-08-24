@@ -25,6 +25,12 @@
   <br>
 
   <div>
+    <%= form.label :tipo %><br>
+    <%= form.select :tipo, options_for_select([["activa", 0], ["pasiva", 1], ["otro tipo", 2], ["complemento", 3]], habil.tipo || 0) %><br>
+  </div>
+  <br>
+
+  <div>
     <%= form.label :oculto %><br>
     <%= form.check_box  :oculto %><br>
   </div>

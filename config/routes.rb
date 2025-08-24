@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   get '/lootbox', to: 'randompick#lootbox'
   post '/lootboxing', to: 'randompick#lootboxing'
   get '/resetdndspells', to: 'dndspells#reset'
+  get '/clasificar_habilidad', to: 'habilidads#clasificar'
 end
