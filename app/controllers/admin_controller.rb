@@ -36,6 +36,8 @@ class AdminController < ApplicationController
     def backup
     end
 
+    def prepare_backup
+    end
 
     def create_backup
         backup_file = nil

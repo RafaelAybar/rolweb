@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/delete_navbar_cache', to: 'admin#delete_navbar_cache'
   get '/delete_all_cache', to: 'admin#delete_all_cache'
   get '/backup', to: 'admin#backup'
+  get '/prepare_backup', to: 'admin#prepare_backup'
   get '/create_backup', to: 'admin#create_backup'
   post '/restore_backup', to: 'admin#restore_backup'
 
