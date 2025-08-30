@@ -101,14 +101,17 @@
     <% end %>
 
 
-
-    <%= yield %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
 
     
     <footer class="footbar">
       <%= link_to "Aviso legal", "/avisolegal"%>
-      <br>
-      <%= link_to "Admin access", new_adminsession_path %>
+      <%= not_admin_content do%>
+        <br>
+        <%= link_to "Admin access", "/control" %>
+      <% end %>
     </footer>
 
   </body>

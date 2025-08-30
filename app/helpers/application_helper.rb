@@ -13,8 +13,14 @@ module ApplicationHelper
     end
   end
 
-  def only_admin_content(&block)
+  def only_admin_content
     if session[:admin]
+      yield
+    end
+  end
+
+  def not_admin_content
+    unless session[:admin]
       yield
     end
   end

@@ -17,7 +17,7 @@ Para ejecutarla en Docker, sigue estos pasos:
 Existe un sistema de admin dentro de la página web para modificar los datos. Debes de establecer `admin_password` en los credenciales de rails para poder acceder a él.
 
 ## Modo Producción de Docker
-Puedes ejecutar esta applicación en modo de producción simplemente cambiando la confiugración en el archivo `.env` antes de ejecutar `docker compose up`. Recuarda añadir `--build` si necesitas cambiar de la imagen de ruby de desarrollo a producción o viceversa.
+Puedes ejecutar esta aplicación en modo de producción simplemente cambiando la configuración en el archivo `.env` antes de ejecutar `docker compose up`. Recuerda añadir `--build` si necesitas cambiar de la imagen de ruby de desarrollo a producción o viceversa.
 
 ## Modo Producción de Verdad  
 
