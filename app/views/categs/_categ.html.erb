@@ -1,9 +1,11 @@
-<h2><%=link_to x.nombre, x%></h2>
+<div class="categ"> <%# categ no tiene estilos definidos, es para el liveSearch.js%>
+    <h2><%=link_to x.nombre, x%></h2>
 
-<div class="grid-container">
-    <% x.items.order(coste: :asc, nombre: :asc).each do |item| %>
-        <%= render "items/item", item: item %>
-    <% end %>
+    <div class="grid-container">
+        <% x.items.order(coste: :asc, nombre: :asc).each do |item| %>
+            <%= render "items/item", item: item %>
+        <% end %>
+    </div>
+
+    <br>
 </div>
-
-<br>
