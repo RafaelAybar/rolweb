@@ -1,3 +1,5 @@
-<%= render "estadoalterado", x: x%>
-<%= link_to "Edit", edit_estadoalterado_path(x) %>
-<%= link_to "Destroy", estadoalterado_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<div class="estadoalterado-edit">
+  <%= render "estadoalterado", x: x%>
+  <%= link_to "Edit", edit_estadoalterado_path(x), class: "btn btn-primary" %>
+  <%= link_to "Destroy", estadoalterado_path(x), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+</div>

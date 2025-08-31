@@ -289,6 +289,20 @@ input {
     color: var(--c_detalle);
 }
 
+.estadoalterado-edit {
+    margin: 10px;
+    padding: 10px;
+    gap: 10px;
+    border: 2px solid var(--c_base);
+    border-radius: 10px;
+}
+.estadoalterado-edit .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid var(--c_base);
+    margin-top: 5px;
+}
+
 
 
 /* CUENTOS */

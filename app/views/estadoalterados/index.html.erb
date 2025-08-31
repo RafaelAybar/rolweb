@@ -2,5 +2,7 @@
     <% @xs.sort_by(&:nombre).each do |x| %>
         <li><%= render "estadoalteradoEdit", x:x%></li>
     <% end %>
-    <li><%= link_to "Añadir estado", new_estadoalterado_path %></li>
+    <br>
+    <br>
+    <li><%= link_to "Añadir estado", new_estadoalterado_path, class: "btn btn-primary" %></li>
 </ul>
