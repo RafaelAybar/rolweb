@@ -1,10 +1,15 @@
 <div class="texto_info texto_info-margins">
 
-<h1>Efectos alterados:</h1>
+<h1>Estados alterados:</h1>
+
+<% only_admin_content do %>
+    <h3><%= link_to "Editar estados alterados", estadoalterados_path %></h3>
+<% end %>
 
 <ul>
     <% @xs.sort_by(&:nombre).each do |x| %>
         <li><%= render "estadoalterados/estadoalterado", x: x%></li>
+        <br>
         <br>
     <% end %>
 </ul>

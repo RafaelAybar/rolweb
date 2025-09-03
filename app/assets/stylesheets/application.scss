@@ -569,6 +569,7 @@ input {
 .carta-image_clase {
     max-width: calc(var(--ancho_carta_clase)*0.4);
     max-height: calc(var(--alto_carta_clase)*0.75);
+    padding: 5px;
 }
 
 .carta-image img {
