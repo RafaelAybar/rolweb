@@ -14,13 +14,11 @@
     y revisitarlos cuando lo necesites.</p>
 <br>
 
-<!-- pues no estaría mal meter una sección de estados alterados que me he dao cuenta que no hay ninguna, pero vamos, eso
- ademas es cosa tuya si quieres meter el desangrado en estados alterados o no-->
-
 <%# <h2> Indice</h2>
 <p>(Puedes pinchar para ir a esa sección.)</p>
 
-<a href="#Estadísticas">Estadísticas</a> %>
+<a href="#Estadísticas">Estadísticas</a>
+TODO %>
 
 <h2>Nomenclatura</h2>
 <p>Lo primero de todo vamos a ver la terminología que se usa en este juego.</p>
@@ -90,6 +88,13 @@ que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desvent
 <p> Esta tirada aplica crítico, explicado un poco mejor más adelante en el combate; pero básicamente
     si en la cara del dado hay un 20, la acción se supera de forma segura (es un crítico) pero si es
     un 1 la acción se falla inmediatamente (es una pifia)
+</p>
+
+<h4>Tirada de destino</h4>
+<p> Se contempla la posibilidad que el GM te pida lanzar una tirada de destino, esta
+    la puede utilizar para ayudarle a definir sobre eventos aleatorios que os sucedan. Se trata de
+    una tirada de 1d20 sin más, pero algunos efectos podrían referirse a ella y modificarla de alguna
+    forma, aunque no es lo habitual.
 </p>
 
 <h2>Tu estado</h2>
@@ -203,8 +208,11 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 </ul>
 <p>Según cómo el equipo vaya en ese momento o la situación, conformaréis cierta composición al entrar en combate</p> 
 <p>Una regla especial es el <b>ataque de oportunidad.</b> Cuando un ser, que está en el mismo espacio 
-    con uno o varios enemigos, sale de ese espacio, cada uno de sus enemigos gana inmediatamente una 
-    acción para atacarle. Esto se aplica bilateralmente entre ambos bandos del combate.</p> 
+    con uno o varios enemigos, sale de ese espacio, cada uno de sus enemigos gana una 
+    acción para atacarle inmediatamente. Esto se aplica bilateralmente entre ambos bandos del combate.</p> 
+<p>Por último, durante un combate a veces quieres comunicarte con alguien, pero se supone que cada turno es
+    una acción rápida y fugaz. Por lo tanto, sólo puedes decir una frase muy corta y consumes la acción de tu
+    turno. También, si se quieres ser más estricto, se puede establecer un máximo de 10 sílabas para esta frase.</p>
 
 <h2>Definición de personaje</h2>
 <p>Ahora toca ver en qué cosiste tu personaje exactamente y luego cómo es el proceso para crearlo. 
@@ -224,11 +232,13 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     que está determinando, entonces esa cosa toma su mínimo como valor.</p>
 
 
-<h3><%= link_to "Clases", clases_path, class: "reglas-font_color" %> y <%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
-<h4>Clase</h4>
+
+<h3><%= link_to "Clases", clases_path, class: "reglas-font_color" %></h3>
 <p>Cada clase tiene un título, nivel, descripción, efectos, clases madres y clases hijas 
     (imagen si eso también). Representan cosas como oficios o razas.</p>
-<h4>Habilidad</h4>
+
+
+<h3><%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
 <p>Cada habilidad tiene:</p>
 <ul>
     <li>Nombre: sin más.</li>
@@ -240,7 +250,23 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <ul>
     <li><b>Pasivas/activas:</b> Algunas habilidades tienen efectos que están siempre funcionando 
         sin necesidad de hacer nada al respecto, otras requieren que las actives y en combate 
-        consumen tu acción de turno. No se pone explícitamente, pero no es difícil distinguirlos.</li>
+        consumen tu acción de turno. En esta página se distinguen por el símbolo que le sigue al
+        nivel. Puede ser:
+        <ul>
+            <li>Activa: triángulo rojo. Consumen la acción de tu turno para utilizarse. </li>   
+            <li>Pasiva: círculo azul. Aplican su efecto de forma continua sin necesidad
+                de activarse. </li>
+            <li>Creación: cuadrado verde. Usadas para crear objetos. Normalmente fuera de
+                combate, pero puedes crear una cosa durante el combate consumiendo tu 
+                acción para ello. </li>
+            <li>Instantáneo: triángulo amarillo. Se consideran activas pero no cosumen la
+                acción, explicado en profundidad más adelante. </li>
+            <li>Complemento: triángulo morado. Modifican habilidades activas, explicado
+                en profundidad más adelante. </li>
+            <li>Especial: rombo naranja. Habilidades difíciles de encajar en las otras categorías.
+                Suelen estar relacionadas con la manipulación de la creación del personaje. </li>
+        </ul>
+    </li>
     <li><b>></b> Muchas habilidades activas tienen algún tipo de coste para usarlas. Esto se 
         indica de la forma: "coste > efecto". Debes de pagar el coste antes de hacer de aplicar 
         el efecto o hacer cualquier tirada relacionada. Si no tienes suficiente de aquello que 
@@ -256,7 +282,9 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     <li><b>Mágico:</b> las habilidades ofensivas de carácter mágico tienen esta palabra clave. Es decir, 
         te fijas en la armadura y penetración mágicas en vez de físicas.</li>
     <li><b>NV:</b> Algunas habilidades o efectos de clases se aprovechan de el nivel de tu clase para 
-        aplicar su efecto, esto se indica con <b>NV</b>.</li>
+        aplicar su efecto, esto se indica con <b>NV</b>. También, muchas habilidades gana efectos extras
+        cuando alcanzas cierto nivel de tu clase, esto se indica de la forma <b>NVX</b> dónde <b>X</b> es
+        tu nivel de clase actual.</li>
     <li><b>[Instantáneo] :</b> una habilidad instantánea puede usarse en cualquier turno; pero sólo 
         puedes usar una habilidad instantánea por ronda (se restablece al principio de tu turno). 
         Si se usa en el turno de un enemigo, debe de 
@@ -273,7 +301,8 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
         a través de la habilidad relacionada. Algunos complementos sólo permiten ciertos tipos de
         habilidades como principal, esto se indica de la forma: "[Complemento:Tipo_habilidad]" Puedes
         usar cualquier cantidad de habilidades complementos junto a la misma habilidad principal siempre
-        que sean diferentes entre sí.</li>
+        que sean diferentes entre sí. Estás habilidades no se consideran ni activas ni pasivas, por lo 
+        que tienen su propio símbolo de triángulo morado.</li>
     <li><b>Golpe al alma:</b> algunas habilidades mágicas no hacen objetivo a una parte del cuerpo 
         concreta, si no al "alma" del objetivo, por lo que ignoras efectos ligados a una parte del 
         cuerpo concreta.</li>
@@ -299,6 +328,10 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
         obligado a tener peso suficiente para llevarlo. Si tu peso total supera tu máximo disminuye 
         tu estabilidad máxima y todas tus tiradas físicas por cada unidad que supere al máximo.</li>
     <li>Categorías: representa el tipo de objeto que es, un ítem pertenece a una o más categorías</li>
+    <li>Clases: si no se indican, cualquiera puede usar este ítem sin problemas. Pero si están presentes,
+        este ítem sólo puede ser usado por personajes que tengan al menos una de las clases listadas.
+        Aunque cualquiera puede seguir portándolo sin problemas.</li>
+    </li>
     <li>Descripción: efectos, requisitos y condiciones.</li>
 </ul>
 <p>Algunos items pueden consumirse al usarse, como munición, pociones o comida. Los quitas de tu 
@@ -323,6 +356,19 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     esta parte está desocupada.</p>
 <p>A diferencia de los efectos de las habilidades, por norma general, los efectos de los items sí 
     son acumulables, incluso si tienes equipados varias copias del mismo.</p>
+
+<h3><%= link_to "Estados alterados", "/estadosAlterados", class: "reglas-font_color" %></h3>
+<p>Existen una serie de estados alterados que pueden afectar a tu personaje. Estos estados 
+    pueden ser provocados por habilidades, items o situaciones especiales. Estos están descritos
+    en su propia página (en la sección de información). Échales un vistazo ahí cuando te topes con alguno.</p>
+<p>Ante los estados alterados se puede immune, resistente o vulnerable a ellos.<p>
+    <ul>
+        <li><b>Inmune:<b> no puedes ser afectado por ese estado alterado de ninguna forma.</li>
+        <li><b>Resistente:<b> debes de consultar el estado alterado para ver cómo se aplica, pues 
+            es diferente en cada uno, revisa su apartado <b>Resistencia</b>.</li>
+        <li><b>Vulnerable:<b> recibes el doble de cargas de ese estado alterado. Si no aplica cargas, 
+            aplica su efecto una vez más.
+        </li>
 
 <h2>Creación de personaje</h2>
 <p>Ahora que conoces todos los elementos que hay vamos a ver cómo se crea tu personaje. Tienes
