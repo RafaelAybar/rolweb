@@ -1,3 +1,5 @@
+# Uso exclusivo para MinioImageUploader
+
 class MinioImage
   include ImageUrlable
 

@@ -105,6 +105,9 @@ Editar credenciales desde Windows:
     $env:EDITOR="code --wait"
     rails credentials:edit
 
+Listar tareas (acepta parámetro para filtrar):
+    rails rake -T
+
 migraciones de imágenes:
     rake img_uploader:migrate_db_to_minio
     rake img_uploader:migrate_minio_to_db

@@ -8,13 +8,18 @@ module SilverImageUploaderMounter
   end
 
   class_methods do
-    def mount_image_uploader
+    def mount_image_uploader(mode: :none)
+
+      # Por ahora esto sólo lo utiliza el img_uploader.rake en reupload_trim para identificar las clases que usan :cut_to_fit
+      class_attribute :image_uploader_mode, instance_writer: false
+      self.image_uploader_mode = mode
+
       att = :image
 
       before_destroy "remove_#{att}!".to_sym
 
       define_method(:img_uploader) do
-        @img_uploader_att ||= SilverImageUploader.new
+        @img_uploader_att ||= SilverImageUploader.new(mode)
       end
 
       define_method(att) do

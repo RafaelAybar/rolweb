@@ -48,7 +48,6 @@ namespace :img_uploader do
 
   desc "Resubir todas las imágenes para convertir y reestablecer formato"
   task reupload: :environment do
-    silver_uploader = SilverImageUploader.new
 
     puts "Iniciando resubida de imágenes usando SilverImageUploader..."
     errores = []
@@ -85,6 +84,38 @@ namespace :img_uploader do
       puts "\n⚠️ #{errores.size} imágenes no válidas encontradas:"
       errores.each do |err|
         puts "  - #{err[:model]} (#{err[:nombre]}): #{err[:error]}"
+      end
+    end
+  end
+
+
+  desc "Resubir imágenes que pueden ser recortadas"
+  task reupload_trim: :environment do
+    models.each do |model|
+      next unless model.respond_to?(:image_uploader_mode) && model.image_uploader_mode == :cut_to_fit
+
+      puts "\nProcesando imágenes de #{model.name}..."
+
+      model.find_each do |record|
+        image_obj = record.image
+        next if image_obj.nil?
+        begin
+          ActiveRecord::Base.transaction do
+            Tempfile.open(["reupload_trim_tmp"], binmode: true) do |tmpfile|
+              tmpfile.write(image_obj.data)
+              tmpfile.rewind
+
+              record.image = ActionDispatch::Http::UploadedFile.new(
+                filename: image_obj.nombre,
+                type: image_obj.content_type,
+                tempfile: tmpfile
+              )
+              record.save!
+            end
+          end
+        rescue => e
+          puts "  ⚠️ Error al procesar #{model.name} ##{record.id} (#{record.nombre}): #{e.message}"
+        end
       end
     end
   end

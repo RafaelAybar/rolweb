@@ -1,5 +1,9 @@
 class SilverImageUploader
-  def initialize
+  MODES = [:none, :cut_to_fit]
+  def initialize (mode = :none)
+    # default mode is :none
+    raise "SilverImageUploader: Modo no soportado: #{mode}" if !MODES.include?(mode)
+    @mode = mode
     @cache = ImageUploaderConfig.cache_type.get_cache(Image)
   end
 
@@ -22,8 +26,8 @@ class SilverImageUploader
 
   def set(file, old_id)
     raise "DatabaseImageUploader.set: Nil file when trying to set image" if file.nil?
-    
-    file = self.class.to_webp(file)
+
+    file = self.class.to_webp(file, @mode)
     ActiveRecord::Base.transaction do
       remove!(old_id)
       img = ImageUploaderConfig.uploader.add(file)
@@ -47,7 +51,7 @@ class SilverImageUploader
   private
 
   require "mini_magick"
-  def self.to_webp(file)
+  def self.to_webp(file, mode)
     begin
       image = MiniMagick::Image.new(file.tempfile.path)
       image.validate!
@@ -55,7 +59,22 @@ class SilverImageUploader
       raise BadImageFileError, "El archivo no es una imagen válida"
     end
     
-    return file if ["image/webp", "image/gif"].include?(image.mime_type)
+    return file if image.mime_type == "image/gif"
+    
+    # Recortar imagen a contenido
+    was_trimmed = false
+    if mode == :cut_to_fit
+      old_width, old_height = image.width, image.height
+      image.mogrify do |m|
+        m.trim
+        m.repage.+
+      end
+      was_trimmed = old_width != image.width or old_height != image.height
+    end
+
+    return file if image.mime_type == "image/webp" and !was_trimmed
+
+    # Convertir a webp
 
     image.format("webp") do |f|
       f.quality Rails.application.config.webp_quality

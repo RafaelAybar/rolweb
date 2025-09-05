@@ -3,7 +3,7 @@ class Clase < ApplicationRecord
     has_rich_text :efecto
     has_rich_text :descripcion
     
-    mount_image_uploader
+    mount_image_uploader(mode: :cut_to_fit)
 
     has_and_belongs_to_many :habilidads
     has_and_belongs_to_many :items
