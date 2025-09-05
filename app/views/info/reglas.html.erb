@@ -388,9 +388,9 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     quedas con el resultado sin poder cambiarlo; pero si el resultado total es menor que 20, puedes 
     repetirlo indefinidamente hasta que sea mayor que 20.</p>
 <h3><%= link_to "Clases", clases_path, class: "reglas-font_color" %> y <%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
-<p>Tienes <b>5</b> niveles disponibles para aprender clases y habilidades. </p>
+<p>Comienzas con <b>5 puntos de nivel</b> disponibles para aprender clases y habilidades. </p>
 <h4>Clases</h4>
-<p>Para aprender una clase gasta un nivel, pero hay que tener en cuenta ciertas condiciones. Es 
+<p>Para aprender una clase gasta un punto de nivel, pero hay que tener en cuenta ciertas condiciones. Es 
     importante distinguir entre clases radicales, clases de raza y el resto. Sólo puedes aprender 
     clases de raza al crear un personaje. Las clases pueden tener clases madres e hijas; las 
     clases que no tienen ninguna madre se consideran radicales. (Se utiliza terminología de 
@@ -399,40 +399,41 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <p>Un pequeño consejo. Como se ve abajo, aprender clases radicales más tarde es más costoso. 
     Entonces recomiendo mirar qué clases te interesaría aprender en el futuro para aprender de 
     primera todas las radicales de las que dependan, aunque ahora no las fueras a aprovechar, 
-    será un ahorro de niveles.</p>
+    será un ahorro de puntos de nivel.</p>
 <h4>Habilidades</h4>
-<p>Al aprender una clases tienes acceso a las habilidades propias de la misma. Al principio gastar 
-    niveles para aprender las habilidades de nivel 1 de las clases que tengas; las habilidades de 
-    nivel 0 nunca cuesta niveles aprenderlas. Algunas habilidades pertenecen a más de una clase, 
+<p>Al aprender una clase tienes acceso a las habilidades propias de la misma. Al principio puntos gastar 
+    puntos de nivel para aprender las habilidades de nivel 1 de las clases que tengas; las habilidades de 
+    nivel 0 nunca cuesta puntos de nivel aprenderlas. Algunas habilidades pertenecen a más de una clase, 
     con que tengas al menos una de las clases listadas es suficiente para aprender esa habilidad.</p>
 <h4><%= link_to "Habilidades independientes", "/clases/102" , class: "reglas-font_color" %></h4>
 <p>Algunas habilidades no pertenecen a ninguna clase. Para poder aprenderlas necesita gastar 
-    niveles igual a su nivel. Nótese que hay algunas habilidades independientes de nivel 0; es 
+    puntos de nivel igual a su nivel. Nótese que hay algunas habilidades independientes de nivel 0; es 
     decir, no cuestan niveles aprenderlas, cualquier persona puede aprender estas habilidades 
-    sin importar el resto de su ficha, pero no siempre es útil tenerlas apuntadas.</p>
+    sin importar el resto de su ficha, pero si nunca las vas a usar no es tan útil tenerlas apuntadas.</p>
 <h3><%= link_to "Items", items_path, class: "reglas-font_color" %></h3>
 <p>Puedes comprar items iniciales con tu oro inicial. (No tienes porqué gastarlo todo.) Además de 
     gastar el oro, asegúrate de que tienes peso para llevarlos encima.</p>
 <br>
-<p>Aunque normalmente habría que seguir estos pasos, puedes ir haciendo todo a la vez, mientras 
-    que respetes la tirada de estadísticas y que al final se quede todo bien, no hay problema.</p>
-<p>Para crearte el personaje con más comodidad puedes encontrar una plantilla de ficha 
+<p>Aunque normalmente habría que seguir estos pasos uno a uno, puedes ir haciendo todo a la vez, mientras 
+    que respetes la tirada de estadísticas y que al final se quede todo bien.</p>
+<p>Para crearte el personaje con más comodidad, puedes encontrar una plantilla de ficha 
     <b class="recursos"><%= link_to "aquí", "https://drive.google.com/drive/folders/1END33BiNOJG38i0EPDiZEkhmVlhTcf7R?usp=sharing" %> </b>
     junto a otros recursos interesantes. </p>
 
 <h2>Progresión</h2>
-<p>Conforme avance la aventura irás consiguiendo nuevos niveles. Puedes invertir estos niveles de 6 formas diferentes:</p>
+<p>Conforme avance la aventura irás consiguiendo nuevos puntos de nivel (normalmente de uno a uno). Puedes
+    invertir estos puntos de 6 formas diferentes:</p>
 <ul>
-    <li>1. Aprender una nueva habilidad independiente gastando niveles igual a su nivel. </li>
-    <li>2. Cada clase tiene su propio nivel que comienza en 1. Puedes invertir un nivel para aumentar 
-        el nivel de cierta clase en 1.</li>
-    <li>3. Aprender una habilidad de clase por un nivel, pero sólo si tu nivel de clase es igual o 
-        mayor al nivel de la habilidad.</li>
-    <li>4. Aprender una nueva clase, sólo si ya has adquirido todas sus clases madres.</li>
-    <li>5. Aprender una nueva clase radical por 3 niveles.</li>
-    <li>6. Gastar 1 nivel en aumentar en 1 una estadística (hasta 20).</li>
+    <li>1. Aprender una nueva habilidad independiente gastando puntos de nivel igual a su nivel. </li>
+    <li>2. Cada clase tiene su propio nivel que comienza en 1. Puedes invertir un punto de nivel
+        para aumentar el nivel de una clase en 1.</li>
+    <li>3. Aprender una nueva habilidad de clase por un punto nivel, pero sólo si tu nivel de clase
+        es igual o superior al nivel de la habilidad.</li>
+    <li>4. Aprender una nueva clase por un punto nivel, sólo si ya has adquirido todas sus clases madres.</li>
+    <li>5. Aprender una nueva clase radical por 3 puntos de nivel.</li>
+    <li>6. Gastar un punto de nivel en aumentar en 1 una estadística (pero sólo hasta 20 por este método).</li>
 </ul>
-<p>Las clases de raza no se puede aprender después de la creación de personaje.</p>
+<p>Las clases de raza no se pueden aprender después de la creación de personaje.</p>
 <p>Tienes la posibilidad de guardarte niveles para no gastarlos inmediatamente al obtenerlos. </p>
 
 <h2>Adversarios</h2>
@@ -441,7 +442,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     en combate así como efectos y habilidades inherentes. Normalmente no tienes acceso a esta información, 
     pero algunas habilidades hacen uso de mobs de los cuales tendrás la información disponibles. Los 
     enemigos funcionan generalmente de forma parecida a tí, pero una pequeña diferencia, es que su 
-    penetración suele ser aleatorio a diferencia tuya, por lo que cualquier punto de armadura que puedas
+    penetración suele ser aleatoria a diferencia tuya, por lo que cualquier punto de armadura que puedas
     ganar viene bien.</p>
 
 <h2>Guía sobre esta web</h2>

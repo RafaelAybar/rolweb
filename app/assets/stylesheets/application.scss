@@ -628,13 +628,11 @@ input {
 
 .clase-details {
     width: 60%;
+    margin-right: 10px;
+    @media (max-width: $max-margin-media) {
+            width: 100%;
+        }
 }
-@media (max-width: $max-margin-media) {
-    .clase-details {
-        width: 100%;
-    }
-}
-
 .clase-herencia {
     display: flex;
     gap: 10px;
