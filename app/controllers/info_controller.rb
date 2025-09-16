@@ -33,4 +33,7 @@ class InfoController < ApplicationController
 
     def arbol
     end
+
+    def newPlayersHelp
+    end
 end

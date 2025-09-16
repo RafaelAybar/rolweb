@@ -9,6 +9,9 @@
 <div class="cuento-main
             <%=" cuento-main_yes_images" if @x.pictures.any?%>
             cuento-main_phone">
+  <%# Parece que la aplicación de clases de arriba parece redundante, cuento-main_phone podría ponerse dentro de cuento-main, pero es %>
+  <%# importante aplicar los estilos en el orden en que estás colocadas las clases. Recordemos que los estilos de la última clase %>
+  <%# sobrescribe al los anteriores.%>
 
   <h2><%= @x.titulo %></h1>
   

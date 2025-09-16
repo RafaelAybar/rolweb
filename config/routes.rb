@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/avisolegal', to: 'info#avisolegal'
   get '/clases-arbol', to: 'info#arbol'
   get '/get_random_element', to: 'info#get_random_element'
+  get '/newPlayersHelp', to: 'info#newPlayersHelp'
 
   get '/control', to: 'admin#control'
   get '/items_no_categ', to: 'admin#items_no_categ'
