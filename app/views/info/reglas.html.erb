@@ -214,9 +214,42 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     una acción rápida y fugaz. Por lo tanto, sólo puedes decir una frase muy corta y consumes la acción de tu
     turno. También, si se quieres ser más estricto, se puede establecer un máximo de 10 sílabas para esta frase.</p>
 
+<h3>Reglas extras para espacios</h3>
+<p> Las siguientes reglas son opcionales y podéis decidir si usarlas o no.</p>
+<p> Primero, aunque se han descrito los espacios en una línea, realmente se pueden disponer en
+    cualquier forma, simplemente es importante que se entienda qué espacios son adyacentes entre sí.
+    Por ejemplo, se pueden usar una cuadrícula, una malla exagonal o incluso un mapa personalizado 
+    adaptado a la situación. </p>
+<p> A continuación también tienes una serie de reglas que puedes usar para representar un poco mejor
+    el entorno y tratar de añadir un poco de estrategia: </p>
+<ul>
+    <li> Coberturas: Puedes establecer coberturas en un espacio que podrían estar orientadas o no.
+        Un jugador puede usar una acción (o aprovechar su acción de moverse) para situarse detrás
+        de la misma. Mientras que esté detrás de una cobertura, los ataques dirigidos a él tienen desventaja.</li>
+    <li> Alturas: Puedes establecer alturas en los espacios, de forma que un espacio puede estar a una altura
+        mayor que otro. Si estás en un espacio a mayor altura que tu objetivo, tienes ventaja en tus
+        ataques contra él. Para moverse entre diferentes alturas puedes definir espacios que actúen como
+        rampas o usar escaleras.</li>
+    <li> Terreno difícil: Puedes definir ciertos espacios como terreno difícil, como por ejemplo terrenos
+        irregulares, con barro, nieve, agua o similar. Les asignas una dificultad y entonces al intentar
+        moverse desde un terreno difícil, resta tu estabilidad actual por la dificultad. </li>
+    <li> Puertas: Una puerta costaría una acción abrirla o cerrarla. Y una prueba de fuerza o bien un ataque
+        contra una armadura fija para intentar derribarla. </li>
+    <li>Objetos lanzables: Puedes añadirlos manualmente en el terreno para ser usados por la habilidad
+        <%= link_to "Lanzar piedra", "/habilidads/620"%>.</li>
+    <li>Espacios estrechos. En estos espacios no se pueden atravesar si hay alguien en él, y el orden dentro
+        de ese espacio sí importa para ver a quién puedes alcanzar.</li>
+</ul>
+<p> Como puedes ver, hay muchas ideas adicionales que se pueden aplicar. En tu partida siempre puedes usar el
+    sistema libremente para resolver nuevas situaciones que os surjan, aplicando algo razonable parecido a lo
+    que se hace normalmente. Usa flexibleme
+
+
+
 <h2>Definición de personaje</h2>
 <p>Ahora toca ver en qué cosiste tu personaje exactamente y luego cómo es el proceso para crearlo. 
-    Ya hemos visto que tienes sangre, estabilidad y cuerpo, veamos cómo se calculan estos valores.</p>
+    Ya hemos visto que tienes sangre, estabilidad y cuerpo, veamos cómo se calculan estos valores.</p>nte la sangre, estabilidad, ventaja, etc, para representar lo que
+    ocurra de la mejor forma posible.</p>
 
 <h3>Estadísticas (ahora de verdad)</h3>
 <p>Vamos a volver a verlas pero esta vez explicándolas.</p>
@@ -357,18 +390,38 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <p>A diferencia de los efectos de las habilidades, por norma general, los efectos de los items sí 
     son acumulables, incluso si tienes equipados varias copias del mismo.</p>
 
+<h4>Comida necesaria</h4>
+<p>Esta regla cambia un poco el uso de la <%= link_to "comida", "/categs/18" %> y es opcional, pero
+    puede ser interesante para traer un pelín más de realismo.<p>
+<p>La comida normalmente restaura sangre, pero si no has sufrido ningún tipo de daño es completamente
+    prescindible. Entonces, para hacerla más necesaria, se puede aplicar lo siguiente. Durante un
+    descanso largo, ahora en vez de restaurar sangre igual a la mitad de tu total, debes de pagar
+    5+CO de sangre. Esto obliga que todo el mundo deba de alimentarse y más si han sido dañados.</p>
+<p>Además de esto, opcionalmente también se puede crear el contador de saturación. Cuando restaures
+    sangre pero ya tengas el máximo, puedes acumular ese valor en tu saturación. Entonces, cuando
+    gastes o pierdas sangre, puedes restar la saturación para restaurar tu sangre. Pero durante el
+    combate sólo puedes traspasar 1 de sangre por turno por este método (automáticamente). El valor
+    máximo de tu saturación es igual a tu constitución. La saturación te permite acumular más sangre
+    por medio de la comida especialmente para tener mucho más margen durante los cálculos del
+    descanso largo, pero sin permitirte abusar del mismo durante el combate.</p>
+<p>Por último respecto a comida, tenemos la capacidad del estómago. Todas las comidas tardan un
+    tiempo largo en digerirse para regenerar sangre y aplicar sus efectos. Entonces, para que un
+    personaje no pueda empacharse de forma ridícula, sólo se le permite comer hasta que haya ingerido
+    comida con un valor de sangre total igual o inferior a la mitad de su constitución. Esta regla
+    también es opcional como el resto.</p>
+
 <h3><%= link_to "Estados alterados", "/estadosAlterados", class: "reglas-font_color" %></h3>
 <p>Existen una serie de estados alterados que pueden afectar a tu personaje. Estos estados 
     pueden ser provocados por habilidades, items o situaciones especiales. Estos están descritos
     en su propia página (en la sección de información). Échales un vistazo ahí cuando te topes con alguno.</p>
 <p>Ante los estados alterados se puede immune, resistente o vulnerable a ellos.<p>
-    <ul>
-        <li><b>Inmune:<b> no puedes ser afectado por ese estado alterado de ninguna forma.</li>
-        <li><b>Resistente:<b> debes de consultar el estado alterado para ver cómo se aplica, pues 
-            es diferente en cada uno, revisa su apartado <b>Resistencia</b>.</li>
-        <li><b>Vulnerable:<b> recibes el doble de cargas de ese estado alterado. Si no aplica cargas, 
-            aplica su efecto una vez más.
-        </li>
+<ul>
+    <li><b>Inmune:</b> no puedes ser afectado por ese estado alterado de ninguna forma.</li>
+    <li><b>Resistente:</b> debes de consultar el estado alterado para ver cómo se aplica, pues 
+        es diferente en cada uno, revisa su apartado <b>Resistencia</b>.</li>
+    <li><b>Vulnerable:</b> recibes el doble de cargas de ese estado alterado. Si no aplica cargas, 
+        aplica su efecto una vez más. </li>
+</ul>
 
 <h2>Creación de personaje</h2>
 <p>Ahora que conoces todos los elementos que hay vamos a ver cómo se crea tu personaje. Tienes
