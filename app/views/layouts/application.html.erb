@@ -80,6 +80,13 @@
           </div>
         <% end %>
 
+          
+        <% not_admin_content do %>
+          <div class="submenu-admin_button">
+            <%= link_to "Admin access", "/control" %>
+          </div>
+        <% end %>
+
         <%= image_tag "scroll.png", class:"subnavbar-scroll_indicator"%>
       </div>
     </nav>
@@ -110,10 +117,6 @@
     
     <footer class="footbar">
       <%= link_to "Aviso legal", "/avisolegal"%>
-      <%= not_admin_content do%>
-        <br>
-        <%= link_to "Admin access", "/control" %>
-      <% end %>
     </footer>
 
   </body>
