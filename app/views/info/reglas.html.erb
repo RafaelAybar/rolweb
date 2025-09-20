@@ -1,6 +1,75 @@
+<nav class="reglas-indice">
+  <h2>Índice</h2>
+  <ul>
+    <li><a href="#"> Inicio</a></li>
+    <li><a href="#nomenclatura">Nomenclatura</a>
+      <ul>
+        <li><a href="#dados">Dados</a></li>
+        <li><a href="#ventaja">Ventaja/desventaja</a></li>
+        <li><a href="#estadisticas">Estadísticas</a></li>
+        <li><a href="#modificadores">Modificadores</a></li>
+        <li><a href="#pruebas">Pruebas de estadística</a>
+          <ul>
+            <li><a href="#tirada-destino">Tirada de destino</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="#tu-estado">Tu estado</a>
+      <ul>
+        <li><a href="#tirada-muerte">Tirada de muerte</a></li>
+        <li><a href="#partes-cuerpo">Partes del cuerpo</a></li>
+        <li><a href="#sangre">Sangre</a></li>
+        <li><a href="#estabilidad">Estabilidad</a></li>
+        <li><a href="#consecuencias">Consecuencias</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#combate">Combate</a>
+      <ul>
+        <li><a href="#reglas-extras">Reglas extras para espacios</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#definicion">Definición de personaje</a>
+      <ul>
+        <li><a href="#estadisticas-2">Estadísticas</a></li>
+        <li><a href="#clases">Clases</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#items">Items</a>
+          <ul>
+            <li><a href="#armadura">Armadura y ropa</a></li>
+            <li><a href="#comida">Comida necesaria</a></li>
+          </ul>
+        </li>
+        <li><a href="#estados-alterados">Estados alterados</a></li>
+      </ul>
+    </li>
+    <li><a href="#creacion">Creación de personaje</a>
+      <ul>
+        <li><a href="#estadisticas-3">Estadísticas</a></li>
+        <li><a href="#clases-habilidades">Clases y habilidades</a>
+          <ul>
+            <li><a href="#clases-2">Clases</a></li>
+            <li><a href="#habilidades-2">Habilidades</a></li>
+            <li><a href="#habilidades-independientes">Habilidades independientes</a></li>
+          </ul>
+        </li>
+        <li><a href="#items-2">Items</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#progresion">Progresión</a></li>
+    <li><a href="#adversarios">Adversarios</a></li>
+    <li><a href="#guia">Guía sobre esta web</a></li>
+  </ul>
+</nav>
+
+
 <div class="texto_info texto_info-margins">
 
-<h1>Reglas</h1>
+<h1 id="reglas">Reglas</h1>
 <p>Bienvenido a Varacia. En esta sección vamos a ver las reglas para crear a tu personaje 
     y para poder batallar y demás.</p>
 <p>En estas reglas se da por sentado que se conoce las bases de un juego de rol. Especial 
@@ -14,15 +83,9 @@
     y revisitarlos cuando lo necesites.</p>
 <br>
 
-<%# <h2> Indice</h2>
-<p>(Puedes pinchar para ir a esa sección.)</p>
-
-<a href="#Estadísticas">Estadísticas</a>
-TODO %>
-
-<h2>Nomenclatura</h2>
+<h2 id="nomenclatura">Nomenclatura</h2>
 <p>Lo primero de todo vamos a ver la terminología que se usa en este juego.</p>
-<h3>Dados</h3>
+<h3 id="dados">Dados</h3>
 <p>Cuando se te pide que lances 1d20, se refiere a que lances un dado de 20 caras y uses 
     el resultado para lo que se te pida. Entonces siempre es [número de dados]d[número de 
     caras de los dados]. Si hay más de un dado sumas el total de todas las caras que han 
@@ -35,7 +98,7 @@ es posible que durante la aventura se te pide que hagas una prueba de alguna est
 para ver si consigues hacer algo o no, simplemente tiras 1d20 y le sumas el modificador 
 de la estadística nombrada (ver modificadores más adelante). Si se te pide una prueba de 
 una estadística que no tienes, le aplicas -5.</p>
-<h3>Ventaja/desventaja</h3>
+<h3 id="ventaja">Ventaja/desventaja</h3>
 <p>Cuando lanzas un dado con <b>ventaja</b> lanzas un dado extra y luego te quedas con el 
 resultado que sea más favorable. <b>Desventaja</b> es exactamente los mismo pero te quedas 
 con el peor resultado. Para ambos casos puedes ganar múltiples acumulaciones, si tienes 2 
@@ -43,7 +106,7 @@ de ventaja lanzarías 2 dados extras y te quedas con el mejor entre los 3, igual
 Las acumulaciones de ventaja y de desventaja se neutralizan entre sí. Ej: un efecto hace 
 que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desventaja normalmente.</p>
 
-<h3>Estadísticas</h3>
+<h3 id="estadisticas">Estadísticas</h3>
 <p>Tu personaje y otros seres tienen una serie de estadísticas. No vamos a explicarlas 
     ahora en detalle, pero vamos a enumerar las <b>estadísticas básicas</b> junto a sus
     iniciales que usaremos para referirnos a ellas de aquí en adelante:</p>
@@ -61,7 +124,7 @@ que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desvent
         el entorno, tu capacidad para encontrar cosas y tu agilidad mental de reacción. </li>
 </ul>
 
-<h3>Modificadores</h3>
+<h3 id="modificadores">Modificadores</h3>
 <p>Cuando se usan las siglas de una estadística, no se refiere a la estadística en sí si 
     no a su modificador. Éste número se calcula según la siguiente tabla y se usa en 
     numerosos efectos. Simplemente mira el valor actual de la estadística y usa el número 
@@ -77,7 +140,7 @@ que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desvent
 </div>
 <p>(La tabla se puede extender en ambos sentidos si es necesario.)</p>
 
-<h3>Pruebas de estadística</h3>
+<h3 id="pruebas">Pruebas de estadística</h3>
 <p> A lo largo de la aventura, durante la exploración y fuera de combate, tu GM puede pedirte
     que realices una prueba de, por ejemplo, fuerza, para ver si consigues o no una acción.
     Una prueba se realiza de una de las 6 estadísticas disponibles según la más adecuada según
@@ -90,19 +153,19 @@ que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desvent
     un 1 la acción se falla inmediatamente (es una pifia)
 </p>
 
-<h4>Tirada de destino</h4>
+<h4 id="tirada-destino">Tirada de destino</h4>
 <p> Se contempla la posibilidad que el GM te pida lanzar una tirada de destino, esta
     la puede utilizar para ayudarle a definir sobre eventos aleatorios que os sucedan. Se trata de
     una tirada de 1d20 sin más, pero algunos efectos podrían referirse a ella y modificarla de alguna
     forma, aunque no es lo habitual.
 </p>
 
-<h2>Tu estado</h2>
+<h2 id="tu-estado">Tu estado</h2>
 <p>A diferencia de otros sistemas, en este no tienes puntos de salud, si no que tienes 
     <b>partes del cuerpo, sangre y estabilidad</b>. Debes de procurar de mantenerlos en 
     buen estado y debes tener apuntado en todo momento sus valores actuales.</p>
 
-<h4>Tirada de muerte</h4>
+<h3 id="tirada-muerte">Tirada de muerte</h3>
 <p>Antes de empezar vamos a ver cómo se puede morir. Un término esencial es la <b>tirada 
     de muerte</b>. Esta consiste en lanzar 1d20. Si el resultado es estrictamente mayor que 
     <b>10</b> tu personaje sobrevive tal y como está; si no, tu personaje muere permanentemente 
@@ -111,7 +174,7 @@ que ganes ventaja pero otro te da 3 de desventaja, en total aplicas 2 de desvent
     esta tirada nunca.</p>
 
 
-<h3>Partes del cuerpo</h3>
+<h3 id="partes-cuerpo">Partes del cuerpo</h3>
 <p>Existen 8 partes del cuerpo numeradas. Se agrupan en las partes altas y en las bajas, esto 
     es relevante para algunos tipos de golpes. Son:</p>
 <ol>
@@ -131,7 +194,7 @@ se consideran <b>principales</b>.</p>
 <p>Cada parte puede estar en 3 estados: <b>saludable</b>, <b>herido</b> y <b>grave</b>. 
 Veremos las consecuencias de estos estados más adelante.</p>
 
-<h3>Sangre</h3>
+<h3 id="sangre">Sangre</h3>
 <p>Tienes un medidor de sangre que indica la sangre que tienes en el cuerpo, algo así como l
     as reservas internas de energía. Si llega a 0 realiza una tirada de muerte; si la superas, 
     establece tu sangre a 1.</p>
@@ -145,12 +208,12 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     la mitad de tu total de sangre. Tu sangre puede llegar a 0 antes de recuperarla durante estos 
     cálculos sin provocar una tirada de muerte.<p>
 
-<h2>Estabilidad</h2>
+<h3 id="estabilidad">Estabilidad</h3>
 <p>Representa tu equilibrio físico actual, si te has caído al suelo o no y tal. Te permite esquivar 
     ataques, lo veremos más adelante.
 </p>
 
-<h2>Consecuencias</h2>
+<h3 id="consecuencias">Consecuencias</h3>
 <p>Ahora sí, con todo esto vamos a ver las consecuencias de que empeore el estado de tus partes 
     del cuerpo (y sangre):</p>
 <ul>
@@ -165,7 +228,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 </ul>
 
 
-<h2>Combate</h2>
+<h2 id="combate">Combate</h2>
 <p>Ahora vamos a echar un vistazo cómo funciona el sistema de combate.</p>
 <p>Es por turnos. En cada turno cada jugador o enemigo puede realizar una acción; que normalmente 
     será usar una de sus habilidades activas o bien intentar hacer otra cosa razonable. El orden 
@@ -214,7 +277,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     una acción rápida y fugaz. Por lo tanto, sólo puedes decir una frase muy corta y consumes la acción de tu
     turno. También, si se quieres ser más estricto, se puede establecer un máximo de 10 sílabas para esta frase.</p>
 
-<h3>Reglas extras para espacios</h3>
+<h3 id="reglas-extras">Reglas extras para espacios</h3>
 <p> Las siguientes reglas son opcionales y podéis decidir si usarlas o no.</p>
 <p> Primero, aunque se han descrito los espacios en una línea, realmente se pueden disponer en
     cualquier forma, simplemente es importante que se entienda qué espacios son adyacentes entre sí.
@@ -246,12 +309,12 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 
 
 
-<h2>Definición de personaje</h2>
+<h2 id="definicion">Definición de personaje</h2>
 <p>Ahora toca ver en qué cosiste tu personaje exactamente y luego cómo es el proceso para crearlo. 
     Ya hemos visto que tienes sangre, estabilidad y cuerpo, veamos cómo se calculan estos valores.</p>nte la sangre, estabilidad, ventaja, etc, para representar lo que
     ocurra de la mejor forma posible.</p>
 
-<h3>Estadísticas (ahora de verdad)</h3>
+<h3 id="estadisticas-2">Estadísticas (ahora de verdad)</h3>
 <p>Vamos a volver a verlas pero esta vez explicándolas.</p>
 <ul>
     <li>(FU) Fuerza: determina tu penetración física.</li>
@@ -266,12 +329,12 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 
 
 
-<h3><%= link_to "Clases", clases_path, class: "reglas-font_color" %></h3>
+<h3 id="clases"><%= link_to "Clases", clases_path, class: "reglas-font_color" %></h3>
 <p>Cada clase tiene un título, nivel, descripción, efectos, clases madres y clases hijas 
     (imagen si eso también). Representan cosas como oficios o razas.</p>
 
 
-<h3><%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
+<h3 id="habilidades"><%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
 <p>Cada habilidad tiene:</p>
 <ul>
     <li>Nombre: sin más.</li>
@@ -300,24 +363,30 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
                 Suelen estar relacionadas con la manipulación de la creación del personaje. </li>
         </ul>
     </li>
+    <br>
     <li><b>></b> Muchas habilidades activas tienen algún tipo de coste para usarlas. Esto se 
         indica de la forma: "coste > efecto". Debes de pagar el coste antes de hacer de aplicar 
         el efecto o hacer cualquier tirada relacionada. Si no tienes suficiente de aquello que 
         necesitas para el coste, no puedes usar la habilidad. Algunas pueden usar estabilidad (ES) 
         como coste, las bajas temporalmente por esa cantidad.</li>
+    <br>
     <li><b>Objetivo del ataque:</b> Si una habilidad está dirigida a una única parte del cuerpo, 
         debes de declarar a cuál antes de tirar precisión. Si es un <b>golpe alto</b>, sólo puedes 
         escoger entre las partes del cuerpo superiores, si es un <b>golpe bajo</b>, de entre las 
         bajas. Si es un <b>golpe aleatorio</b>, tras impactar tira 1d8 para decidir en que parte se 
         acertó; si además es aleatorio pero bajo o alto, usa 1d4.</li>
+    <br>
     <li><b>Dañar:</b> cuando una habilidad daña, hace que la/s parte/s del cuerpo afectada/s desciendan 
         una vez en su estado de salud.</li>
+    <br>
     <li><b>Mágico:</b> las habilidades ofensivas de carácter mágico tienen esta palabra clave. Es decir, 
         te fijas en la armadura y penetración mágicas en vez de físicas.</li>
+    <br>
     <li><b>NV:</b> Algunas habilidades o efectos de clases se aprovechan de el nivel de tu clase para 
         aplicar su efecto, esto se indica con <b>NV</b>. También, muchas habilidades gana efectos extras
         cuando alcanzas cierto nivel de tu clase, esto se indica de la forma <b>NVX</b> dónde <b>X</b> es
         tu nivel de clase actual.</li>
+    <br>
     <li><b>[Instantáneo] :</b> una habilidad instantánea puede usarse en cualquier turno; pero sólo 
         puedes usar una habilidad instantánea por ronda (se restablece al principio de tu turno). 
         Si se usa en el turno de un enemigo, debe de 
@@ -329,6 +398,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
         entonces los instantáneos suceden de arriba abajo, es decir, primero los últimos declarados; 
         inmediatamente después sucede la acción normal del turno y luego el turno termina sin que haya 
         oportunidad de usar más instantáneos.</li>
+    <br>
     <li><b>[Complemento] :</b> una habilidad complemento no gasta acción y siempre se realiza a la vez
         que otra habilidad. Cualquier efecto de una habilidad complemento se adosa y se aplica directamente
         a través de la habilidad relacionada. Algunos complementos sólo permiten ciertos tipos de
@@ -336,14 +406,18 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
         usar cualquier cantidad de habilidades complementos junto a la misma habilidad principal siempre
         que sean diferentes entre sí. Estás habilidades no se consideran ni activas ni pasivas, por lo 
         que tienen su propio símbolo de triángulo morado.</li>
+    <br>
     <li><b>Golpe al alma:</b> algunas habilidades mágicas no hacen objetivo a una parte del cuerpo 
         concreta, si no al "alma" del objetivo, por lo que ignoras efectos ligados a una parte del 
         cuerpo concreta.</li>
+    <br>
     <li><b>Matar:</b> algunas habilidades pueden tratar de matar al objetivo directamente, pero si 
         el objetivo es un jugador entonces realiza una tirada de muerte.</li>
+    <br>
     <li><b>{}</b> Algunas habilidades requieren como condición adicional que superes cierta prueba 
         para poder aplicar el efecto (normalmente a cambio de hacer tirada de precisión). Se indica 
         de la forma: "coste {prueba} > efecto".</li>
+    <br>
     <li><b>Escamavida:</b> Las escamavidas se asocian a una parte concreta del cuerpo, se pueden 
         acumular y duran indefinidamente. Cuando esa parte del cuerpo fuera a ser dañada, en vez de 
         eso destruye una escamavida.</li>
@@ -351,7 +425,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <p>Además, por norma general, los efectos de las habilidades no son acumulables, a no ser que se indique lo contrario.</p>
 
 
-<h3><%= link_to "Item", items_path, class: "reglas-font_color" %></h3>
+<h3 id="items"><%= link_to "Item", items_path, class: "reglas-font_color" %></h3>
 <p>Cada item tiene:</p>
 <ul>
     <li>Nombre: sin más.</li>
@@ -377,7 +451,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     cuenta a dos manos). Esta regla es importante tenerla en cuenta por si te hieren algún brazo. Si 
     pierdes un brazo, te vuelves dominante en el que te queda automáticamente.</p>
 
-<h4><%= link_to "Armadura y ropa", "/categs/6", class: "reglas-font_color" %></h4>
+<h4 id="armadura"><%= link_to "Armadura y ropa", "/categs/6", class: "reglas-font_color" %></h4>
 <p>No hay una regla estricta para definir que ropa o armaduras puedes tener equipados a la vez 
     (a parte del peso), hay que ser razonable. Por otro lado, para simplificar la lectura, las estadísticas 
     de armadura se indican de la forma: "Armadura: M1[F1,F2,F3,F4,,F5,F6,F7,F8]" dónde M1 es la 
@@ -390,7 +464,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <p>A diferencia de los efectos de las habilidades, por norma general, los efectos de los items sí 
     son acumulables, incluso si tienes equipados varias copias del mismo.</p>
 
-<h4>Comida necesaria</h4>
+<h4 id="comida">Comida necesaria</h4>
 <p>Esta regla cambia un poco el uso de la <%= link_to "comida", "/categs/18" %> y es opcional, pero
     puede ser interesante para traer un pelín más de realismo.<p>
 <p>La comida normalmente restaura sangre, pero si no has sufrido ningún tipo de daño es completamente
@@ -410,7 +484,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     comida con un valor de sangre total igual o inferior a la mitad de su constitución. Esta regla
     también es opcional como el resto.</p>
 
-<h3><%= link_to "Estados alterados", "/estadosAlterados", class: "reglas-font_color" %></h3>
+<h3 id="estados-alterados"><%= link_to "Estados alterados", "/estadosAlterados", class: "reglas-font_color" %></h3>
 <p>Existen una serie de estados alterados que pueden afectar a tu personaje. Estos estados 
     pueden ser provocados por habilidades, items o situaciones especiales. Estos están descritos
     en su propia página (en la sección de información). Échales un vistazo ahí cuando te topes con alguno.</p>
@@ -423,7 +497,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
         aplica su efecto una vez más. </li>
 </ul>
 
-<h2>Creación de personaje</h2>
+<h2 id="creacion">Creación de personaje</h2>
 <p>Ahora que conoces todos los elementos que hay vamos a ver cómo se crea tu personaje. Tienes
     libertad para anotar todo lo relacionado con tu personaje de la forma que prefieras, 
     siempre y cuando esté bien apuntado todo lo explicado a continuación. Peor si quieres, puedes usar
@@ -433,16 +507,16 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     para apuntarlo todo ahí. Ten en cuenta que según tu caso tendrás que ampliarla y modificarla
     para que te sea más convenientes, pero puedes usarla de punto de partida. </p>
     <p> Bueno, hay que hacer varias cosas, vamos a verlas una a una.</p>
-<h3>Estadísticas</h3>
+<h3 id="estadisticas-3">Estadísticas</h3>
 <p>Además de las 6 estadística básicas hay que establecer tu oro inicial. Para inicializarlas, 
     lanzas 2d6 siete veces (sumas los dados a pares y obtienes 7 valores). A continuación debes 
     de repartir los valores libremente entre las 6 estadísticas iniciales y el oro. Si crees que 
     la tirada es mala, antes de hacer nada más, tienes la oportunidad de repetirla entera; te 
     quedas con el resultado sin poder cambiarlo; pero si el resultado total es menor que 20, puedes 
     repetirlo indefinidamente hasta que sea mayor que 20.</p>
-<h3><%= link_to "Clases", clases_path, class: "reglas-font_color" %> y <%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
+<h3 id="clases-habilidades"><%= link_to "Clases", clases_path, class: "reglas-font_color" %> y <%= link_to "habilidades", habilidads_path, class: "reglas-font_color" %></h3>
 <p>Comienzas con <b>5 puntos de nivel</b> disponibles para aprender clases y habilidades. </p>
-<h4>Clases</h4>
+<h4 id="clases-2">Clases</h4>
 <p>Para aprender una clase gasta un punto de nivel, pero hay que tener en cuenta ciertas condiciones. Es 
     importante distinguir entre clases radicales, clases de raza y el resto. Sólo puedes aprender 
     clases de raza al crear un personaje. Las clases pueden tener clases madres e hijas; las 
@@ -453,17 +527,17 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     Entonces recomiendo mirar qué clases te interesaría aprender en el futuro para aprender de 
     primera todas las radicales de las que dependan, aunque ahora no las fueras a aprovechar, 
     será un ahorro de puntos de nivel.</p>
-<h4>Habilidades</h4>
+<h4 id="habilidades-2">Habilidades</h4>
 <p>Al aprender una clase tienes acceso a las habilidades propias de la misma. Al principio puntos gastar 
     puntos de nivel para aprender las habilidades de nivel 1 de las clases que tengas; las habilidades de 
     nivel 0 nunca cuesta puntos de nivel aprenderlas. Algunas habilidades pertenecen a más de una clase, 
     con que tengas al menos una de las clases listadas es suficiente para aprender esa habilidad.</p>
-<h4><%= link_to "Habilidades independientes", "/clases/102" , class: "reglas-font_color" %></h4>
+<h4 id="habilidades-independientes"><%= link_to "Habilidades independientes", "/clases/102" , class: "reglas-font_color" %></h4>
 <p>Algunas habilidades no pertenecen a ninguna clase. Para poder aprenderlas necesita gastar 
     puntos de nivel igual a su nivel. Nótese que hay algunas habilidades independientes de nivel 0; es 
     decir, no cuestan niveles aprenderlas, cualquier persona puede aprender estas habilidades 
     sin importar el resto de su ficha, pero si nunca las vas a usar no es tan útil tenerlas apuntadas.</p>
-<h3><%= link_to "Items", items_path, class: "reglas-font_color" %></h3>
+<h3 id="items-2"><%= link_to "Items", items_path, class: "reglas-font_color" %></h3>
 <p>Puedes comprar items iniciales con tu oro inicial. (No tienes porqué gastarlo todo.) Además de 
     gastar el oro, asegúrate de que tienes peso para llevarlos encima.</p>
 <br>
@@ -475,7 +549,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     en <a href="/newPlayersHelp">Ayuda para nuevos jugadores</a>, si quieres ver algunas recomendaciones para crear a Tu
     personaje, aunque son completamente opcionales de leer. </p>
 
-<h2>Progresión</h2>
+<h2 id="progresion">Progresión</h2>
 <p>Conforme avance la aventura irás consiguiendo nuevos puntos de nivel (normalmente de uno a uno). Puedes
     invertir estos puntos de 6 formas diferentes:</p>
 <ul>
@@ -491,7 +565,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
 <p>Las clases de raza no se pueden aprender después de la creación de personaje.</p>
 <p>Tienes la posibilidad de guardarte niveles para no gastarlos inmediatamente al obtenerlos. </p>
 
-<h2>Adversarios</h2>
+<h2 id="adversarios">Adversarios</h2>
 <p>Los monstruos y oponentes a los que te enfrentas son seres que normalmente están definidos como 
     "mobs". Los mobs no tienen estadísticas básicas pero sí todos los atributos mínimos para funcionar 
     en combate así como efectos y habilidades inherentes. Normalmente no tienes acceso a esta información, 
@@ -500,7 +574,7 @@ por turno en combate o cada 10 minutos fuera de combate, hasta que se pare el sa
     penetración suele ser aleatoria a diferencia tuya, por lo que cualquier punto de armadura que puedas
     ganar viene bien.</p>
 
-<h2>Guía sobre esta web</h2>
+<h2 id="guia">Guía sobre esta web</h2>
 <p>Un par de apuntes sobre esta página. A partir la barra de navegación tienes acceso a todo el contenido
     actual que hay en el rol. Se muestra toda la información que se ha detallado sobre clases, habilidades
     e ítems; pero además a veces hay enlaces adicionales sobre cosas a las que referencian en su efecto;
