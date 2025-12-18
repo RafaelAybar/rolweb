@@ -85,7 +85,7 @@ gem "sassc", "~> 2.4"
 gem 'kaminari'
 
 # para el minio
-gem 'aws-sdk-s3', '~> 1.0'
+gem 'aws-sdk-s3', '~> 1.208'
 
 # para el backup
 gem "minitar", "~> 0.12.1"
